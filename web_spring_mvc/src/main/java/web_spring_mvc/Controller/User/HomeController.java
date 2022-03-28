@@ -1,4 +1,4 @@
-package web_spring_mvc.UserController;
+package web_spring_mvc.Controller.User;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
