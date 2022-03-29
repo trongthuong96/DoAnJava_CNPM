@@ -6,19 +6,21 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import web_spring_mvc.Dao.HomeDao;
+import web_spring_mvc.Dao.BannerDao;
+import web_spring_mvc.Service.User.HomeServiceImpl;
 
 @Controller
 public class HomeController {
 	
 	@Autowired
-	HomeDao homeDao;
+	HomeServiceImpl homeService;
 	
 	@RequestMapping(value = {"/","trang-chu"})
 	public ModelAndView Index() {
 		
 		ModelAndView mv = new ModelAndView("user/index");
-		mv.addObject("banner", homeDao.GetDataBanner());
+		mv.addObject("banner", homeService.GetDataBanner());
+		mv.addObject("typeProduct", homeService.getTypeProduct());
 		return mv;
 	}
 	

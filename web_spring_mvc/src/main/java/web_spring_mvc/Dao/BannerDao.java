@@ -11,9 +11,11 @@ import web_spring_mvc.Entity.Banner;
 import web_spring_mvc.Entity.MapperBanner;
 
 @Repository
-public class HomeDao {
+public class BannerDao {
+	
 	@Autowired
-	public JdbcTemplate _jdbcTemplate;
+	private JdbcTemplate _jdbcTemplate;
+	
 	public List<Banner> GetDataBanner() {
 		List<Banner> list = new ArrayList<Banner>();
 		String sql = "SELECT * FROM banner";
