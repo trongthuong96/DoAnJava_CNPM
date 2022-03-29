@@ -10,18 +10,16 @@ import web_spring_mvc.Dao.BannerDao;
 import web_spring_mvc.Service.User.HomeServiceImpl;
 
 @Controller
-public class HomeController {
-	
-	@Autowired
-	HomeServiceImpl homeService;
+public class HomeController extends BaseController{
 	
 	@RequestMapping(value = {"/","trang-chu"})
 	public ModelAndView Index() {
 		
-		ModelAndView mv = new ModelAndView("user/index");
-		mv.addObject("banner", homeService.GetDataBanner());
-		mv.addObject("typeProduct", homeService.getTypeProduct());
-		return mv;
+		//ModelAndView mv = new ModelAndView("user/index");
+		_mvShare.addObject("banner", _homeService.GetDataBanner());
+		_mvShare.addObject("typeProduct", _homeService.getTypeProduct());
+		_mvShare.setViewName("user/index");
+		return _mvShare;
 	}
 	
 	@RequestMapping(value = {"san-pham"})

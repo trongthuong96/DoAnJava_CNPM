@@ -11,10 +11,7 @@ import web_spring_mvc.Entity.Banner;
 import web_spring_mvc.Entity.MapperBanner;
 
 @Repository
-public class BannerDao {
-	
-	@Autowired
-	private JdbcTemplate _jdbcTemplate;
+public class BannerDao extends BaseDao{
 	
 	public List<Banner> GetDataBanner() {
 		List<Banner> list = new ArrayList<Banner>();
