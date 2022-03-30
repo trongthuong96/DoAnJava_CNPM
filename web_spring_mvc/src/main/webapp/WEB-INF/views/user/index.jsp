@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
 
 <body>
 <!-- 
@@ -104,7 +105,7 @@ Body Section
 New Products
 -->
 	<div class="well well-small">
-	<h3>New Products </h3>
+	<h3>Sản phẩm mới </h3>
 	<hr class="soften"/>
 		<div class="row-fluid">
 		<div id="newProductCar" class="carousel slide">
@@ -231,53 +232,36 @@ New Products
 	Featured Products
 	-->
 		<div class="well well-small">
-		  <h3><a class="btn btn-mini pull-right" href="products.html" title="View more">VIew More<span class="icon-plus"></span></a> Featured Products  </h3>
+		  <h3><a class="btn btn-mini pull-right" href="products.html" title="View more">VIew More<span class="icon-plus"></span></a> Sản phẩm nổi bật  </h3>
 		  <hr class="soften"/>
 		  <div class="row-fluid">
+		  
+		  <c:if test="${products.size() > 0 }">
 		  <ul class="thumbnails">
+		  
+		  <c:forEach var="item" items="${products}" varStatus="loop">
 			<li class="span4">
 			  <div class="thumbnail">
 				<a class="zoomTool" href="product_details.html" title="add to cart"><span class="icon-search"></span> QUICK VIEW</a>
 				<a  href="product_details.html"><img src="assets/img/d.jpg" alt=""></a>
 				<div class="caption">
-				  <h5>Manicure & Pedicure</h5>
+				  <h5>${item.productName}</h5>
 				  <h4>
 					  <a class="defaultBtn" href="product_details.html" title="Click to view"><span class="icon-zoom-in"></span></a>
 					  <a class="shopBtn" href="#" title="add to cart"><span class="icon-plus"></span></a>
-					  <span class="pull-right">$22.00</span>
+					  <span class="pull-right"><fmt:formatNumber type = "number" groupingUsed="true" value = "${item.price}" />đ</span>
 				  </h4>
 				</div>
 			  </div>
 			</li>
-			<li class="span4">
-			  <div class="thumbnail">
-				<a class="zoomTool" href="product_details.html" title="add to cart"><span class="icon-search"></span> QUICK VIEW</a>
-				<a  href="product_details.html"><img src="assets/img/e.jpg" alt=""></a>
-				<div class="caption">
-				  <h5>Manicure & Pedicure</h5>
-				  <h4>
-					  <a class="defaultBtn" href="product_details.html" title="Click to view"><span class="icon-zoom-in"></span></a>
-					  <a class="shopBtn" href="#" title="add to cart"><span class="icon-plus"></span></a>
-					  <span class="pull-right">$22.00</span>
-				  </h4>
-				</div>
-			  </div>
-			</li>
-			<li class="span4">
-			  <div class="thumbnail">
-				<a class="zoomTool" href="product_details.html" title="add to cart"><span class="icon-search"></span> QUICK VIEW</a>
-				<a  href="product_details.html"><img src="assets/img/f.jpg" alt=""/></a>
-				<div class="caption">
-				  <h5>Manicure & Pedicure</h5>
-				  <h4>
-					  <a class="defaultBtn" href="product_details.html" title="Click to view"><span class="icon-zoom-in"></span></a>
-					  <a class="shopBtn" href="#" title="add to cart"><span class="icon-plus"></span></a>
-					  <span class="pull-right">$22.00</span>
-				  </h4>
-				</div>
-			  </div>
-			</li>
-		  </ul>	
+			<c:if test="${(loop.index + 1) % 3 == 0 || (loop.index + 1) == products.size() }">
+				</ul>
+				<c:if test="${(loop.index + 1) < products.size() }">
+					<ul class="thumbnails">
+				</c:if>
+			</c:if>
+			</c:forEach>
+		  </c:if>
 	</div>
 	</div>
 	
