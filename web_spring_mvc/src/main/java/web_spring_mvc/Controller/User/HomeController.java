@@ -7,7 +7,7 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class HomeController extends BaseController{
 	
-	@RequestMapping(value = {"/","trang-chu"})
+	@RequestMapping(value = {"/","/trang-chu/"})
 	public ModelAndView Index() {
 		
 		//ModelAndView mv = new ModelAndView("user/index");
@@ -19,7 +19,7 @@ public class HomeController extends BaseController{
 		return _mvShare;
 	}
 	
-	@RequestMapping(value = {"san-pham"})
+	@RequestMapping(value = {"san-pham-san"})
 	public ModelAndView Product() {
 		ModelAndView mv = new ModelAndView("user/product");
 		return mv;

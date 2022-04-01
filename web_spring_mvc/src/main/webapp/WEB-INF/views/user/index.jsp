@@ -12,7 +12,7 @@ Body Section
 <div class="well well-small">
 	<ul class="nav nav-list">
 		<c:forEach var="item" items="${typeProduct}">
-			<li><a href="products.html"><span class="icon-chevron-right"></span> ${item.name}</a></li>
+			<li><a href='<c:url value="/san-pham/${item.id}"></c:url>'><span class="icon-chevron-right"></span> ${item.name}</a></li>
 		</c:forEach>
 		
 		<li style="border:0"> &nbsp;</li>
