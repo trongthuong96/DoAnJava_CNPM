@@ -12,14 +12,13 @@ public class HomeController extends BaseController{
 		
 		//ModelAndView mv = new ModelAndView("user/index");
 		_mvShare.addObject("banner", _homeService.GetDataBanner());
-		_mvShare.addObject("typeProduct", _homeService.getTypeProduct());
 		_mvShare.addObject("newProduct", _homeService.GetDataNewProduct());
 		_mvShare.addObject("hotProduct", _homeService.GetDataHotProduct());
 		_mvShare.setViewName("user/index");
 		return _mvShare;
 	}
 	
-	@RequestMapping(value = {"san-pham-san"})
+	@RequestMapping(value = {"/chi-tiet"})
 	public ModelAndView Product() {
 		ModelAndView mv = new ModelAndView("user/product");
 		return mv;

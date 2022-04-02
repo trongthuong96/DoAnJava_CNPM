@@ -3,193 +3,152 @@
 <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
 
+<title>Trang chủ <c:set var = "title" scope = "session" value = "${1}"/></title>
+
 <body>
-<!-- 
-Body Section 
--->
-	<div class="row">
-<div id="sidebar" class="span3">
-<div class="well well-small">
-	<ul class="nav nav-list">
-		<c:forEach var="item" items="${typeProduct}">
-			<li><a href='<c:url value="/san-pham/${item.id}"></c:url>'><span class="icon-chevron-right"></span> ${item.name}</a></li>
-		</c:forEach>
-		
-		<li style="border:0"> &nbsp;</li>
-		<li> <a class="totalInCart" href="cart.html"><strong>Total Amount  <span class="badge badge-warning pull-right" style="line-height:18px;">$448.42</span></strong></a></li>
-	</ul>
-</div>
-
-			  <div class="well well-small alert alert-warning cntr">
-				  <h2>50% Discount</h2>
-				  <p> 
-					 only valid for online order. <br><br><a class="defaultBtn" href="#">Click here </a>
-				  </p>
-			  </div>
-			  <div class="well well-small" ><a href="#"><img src="assets/img/paypal.jpg" alt="payment method paypal"></a></div>
-			
-			<a class="shopBtn btn-block" href="#">Upcoming products <br><small>Click to view</small></a>
-			<br>
-			<br>
-			<ul class="nav nav-list promowrapper">
-			<li>
-			  <div class="thumbnail">
-				<a class="zoomTool" href="product_details.html" title="add to cart"><span class="icon-search"></span> QUICK VIEW</a>
-				<img src="assets/img/bootstrap-ecommerce-templates.png" alt="bootstrap ecommerce templates">
-				<div class="caption">
-				  <h4><a class="defaultBtn" href="product_details.html">VIEW</a> <span class="pull-right">$22.00</span></h4>
-				</div>
-			  </div>
-			</li>
-			<li style="border:0"> &nbsp;</li>
-			<li>
-			  <div class="thumbnail">
-				<a class="zoomTool" href="product_details.html" title="add to cart"><span class="icon-search"></span> QUICK VIEW</a>
-				<img src="<c:url value ="assets/img/shopping-cart-template.png" />" alt="shopping cart template">
-				<div class="caption">
-				  <h4><a class="defaultBtn" href="product_details.html">VIEW</a> <span class="pull-right">$22.00</span></h4>
-				</div>
-			  </div>
-			</li>
-			<li style="border:0"> &nbsp;</li>
-			<li>
-			  <div class="thumbnail">
-				<a class="zoomTool" href="product_details.html" title="add to cart"><span class="icon-search"></span> QUICK VIEW</a>
-				<img src="assets/img/bootstrap-template.png" alt="bootstrap template">
-				<div class="caption">
-				  <h4><a class="defaultBtn" href="product_details.html">VIEW</a> <span class="pull-right">$22.00</span></h4>
-				</div>
-			  </div>
-			</li>
-		  </ul>
-
-	</div>
-	<div class="span9">
-	<div class="well np">
-		<div id="myCarousel" class="carousel slide homCar">
-            <div class="carousel-inner">
-			  <div class="item">
-                <img style="width:100%" src="assets/img/bootstrap_free-ecommerce.png" alt="bootstrap ecommerce templates">
-                <div class="carousel-caption">
-                      <h4>Bootstrap shopping cart</h4>
-                      <p><span>Very clean simple to use</span></p>
+<div id="header-carousel" class="carousel slide" data-ride="carousel">
+    <div class="carousel-inner">
+        <div class="carousel-item active" style="height: 410px;">
+            <img class="img-fluid" src="<c:url value="/assets/img/banner/banner1.jpg" />"  alt="Image">
+            <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
+                <div class="p-3" style="max-width: 700px;">
+                    <h4 class="text-light text-uppercase font-weight-medium mb-3">10% Off Your First Order</h4>
+                    <h3 class="display-4 text-white font-weight-semi-bold mb-4">Fashionable Dress</h3>
+                    <a href="" class="btn btn-light py-2 px-3">Shop Now</a>
                 </div>
-              </div>
-			  <div class="item">
-                <img style="width:100%" src="assets/img/carousel1.png" alt="bootstrap ecommerce templates">
-                <div class="carousel-caption">
-                      <h4>Bootstrap Ecommerce template</h4>
-                      <p><span>Highly Google seo friendly</span></p>
-                </div>
-              </div>
-			  <div class="item active">
-                <img style="width:100%" src="assets/img/carousel3.png" alt="bootstrap ecommerce templates">
-                <div class="carousel-caption">
-                      <h4>Twitter Bootstrap cart</h4>
-                      <p><span>Very easy to integrate and expand.</span></p>
-                </div>
-              </div>
-              <div class="item">
-                <img style="width:100%" src="assets/img/bootstrap-templates.png" alt="bootstrap templates">
-                <div class="carousel-caption">
-                      <h4>Bootstrap templates integration</h4>
-                      <p><span>Compitable to many more opensource cart</span></p>
-                </div>
-              </div>
             </div>
-            <a class="left carousel-control" href="#myCarousel" data-slide="prev">&lsaquo;</a>
-            <a class="right carousel-control" href="#myCarousel" data-slide="next">&rsaquo;</a>
-          </div>
         </div>
-<!--
-New Products
--->
-	<div class="well well-small">
-	<h3>Sản phẩm mới </h3>
-	<hr class="soften"/>
-		
-		<div class="row-fluid">
-				<div id="newProductCar" class="carousel slide">
-					<div class="carousel-inner">
-					<c:if test="${ newProduct.size() > 0 }">
-						<div class="item active">
-							<ul class="thumbnails">
-							<c:forEach var="item" items="${ newProduct }" varStatus="loop">
-								<li class="span3">
-									<div class="thumbnail">
-										<a class="zoomTool" href="product_details.html"
-											title="add to cart"><span class="icon-search"></span>
-											QUICK VIEW</a> <a href="product_details.html"><img
-											src="assets/img/d.jpg" alt=""></a>
-									</div>
-								</li>
-								<c:if test="${ (loop.index + 1) % 4 == 0 || (loop.index + 1)  == newProduct.size() }">
-										</ul>
-									</div>
-									<c:if test="${ (loop.index + 1) < newProduct.size() }">
-										<div class="item">
-											<ul class="thumbnails">
-									</c:if>
-								</c:if>
-							</c:forEach>
-					</c:if>
-						
-					</div>
-					<a class="left carousel-control" href="#newProductCar"
-						data-slide="prev">&lsaquo;</a> <a class="right carousel-control"
-						href="#newProductCar" data-slide="next">&rsaquo;</a>
-				</div>
-			</div>
-		
-	</div>
-	<!--
-	Featured Products
-	-->
-		<div class="well well-small">
-		  <h3><a class="btn btn-mini pull-right" href="products.html" title="View more">VIew More<span class="icon-plus"></span></a> Sản phẩm nổi bật  </h3>
-		  <hr class="soften"/>
-		  <div class="row-fluid">
-		  
-		  <c:if test="${hotProduct.size() > 0 }">
-		  <ul class="thumbnails">
-		  
-		  <c:forEach var="item" items="${hotProduct}" varStatus="loop">
-			<li class="span4">
-			  <div class="thumbnail">
-				<a class="zoomTool" href="product_details.html" title="add to cart"><span class="icon-search"></span> QUICK VIEW</a>
-				<a  href="product_details.html"><img src="assets/img/d.jpg" alt=""></a>
-				<div class="caption">
-				  <h5>${item.productName}</h5>
-				  <h4>
-					  <a class="defaultBtn" href="product_details.html" title="Click to view"><span class="icon-zoom-in"></span></a>
-					  <a class="shopBtn" href="#" title="add to cart"><span class="icon-plus"></span></a>
-					  <span class="pull-right"><fmt:formatNumber type = "number" groupingUsed="true" value = "${item.price}" />₫</span>
-				  </h4>
-				</div>
-			  </div>
-			</li>
-			<c:if test="${(loop.index + 1) % 3 == 0 || (loop.index + 1) == products.size() }">
-				</ul>
-				<c:if test="${(loop.index + 1) < products.size() }">
-					<ul class="thumbnails">
-				</c:if>
+        <div class="carousel-item" style="height: 410px;">
+            <img class="img-fluid" src="<c:url value="/assets/img/banner/banner2.jpg" />"  alt="Image">
+            <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
+                <div class="p-3" style="max-width: 700px;">
+                    <h4 class="text-light text-uppercase font-weight-medium mb-3">10% Off Your First Order</h4>
+                    <h3 class="display-4 text-white font-weight-semi-bold mb-4">Reasonable Price</h3>
+                    <a href="" class="btn btn-light py-2 px-3">Shop Now</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <a class="carousel-control-prev" href="#header-carousel" data-slide="prev">
+        <div class="btn btn-dark" style="width: 45px; height: 45px;">
+            <span class="carousel-control-prev-icon mb-n2"></span>
+        </div>
+    </a>
+    <a class="carousel-control-next" href="#header-carousel" data-slide="next">
+        <div class="btn btn-dark" style="width: 45px; height: 45px;">
+            <span class="carousel-control-next-icon mb-n2"></span>
+        </div>
+    </a>
+</div>
+</div>
+</div>
+</div>
+<!-- Navbar End -->
+
+<!-- Products Start -->
+    <div class="container-fluid pt-5">
+        <div class="text-center mb-4">
+            <h2 class="section-title px-5"><span class="px-2">Sản phẩm mới</span></h2>
+        </div>
+        <div class="row px-xl-5 pb-3">
+        
+        <!-- Sản phẩm mới -->
+        	<c:if test="${ newProduct.size() > 0 }">
+					<c:forEach var="item" items="${ newProduct }" varStatus="loop">
+						<div class="col-lg-3 col-md-6 col-sm-12 pb-1">
+			                <div class="card product-item border-0 mb-4">
+			                    <div class="card-header product-img position-relative overflow-hidden bg-transparent border p-0">
+			                        <img class="img-fluid w-100" src="<c:url value="/assets/img/product-1.jpg" />"  alt="">
+			                    </div>
+			                    <div class="card-body border-left border-right text-center p-0 pt-4 pb-3">
+			                        <h6 class="text-truncate mb-3">${item.productName}</h6>
+			                        <div class="d-flex justify-content-center">
+			                            <h6><fmt:formatNumber type = "number" groupingUsed="true" value = "${item.price}" />₫</h6><h6 class="text-muted ml-2"><!-- <del>1,200,000đ</del> --></h6>
+			                        </div>
+			                    </div>
+			                    <div class="card-footer d-flex justify-content-between bg-light border">
+			                        <a href="" class="btn btn-sm text-dark p-0"><i class="fas fa-eye text-primary mr-1"></i>Chi tiết sản phẩm</a>
+			                        <a href="" class="btn btn-sm text-dark p-0"><i class="fas fa-shopping-cart text-primary mr-1"></i>Thêm vào giỏ hàng</a>
+			                    </div>
+			                </div>
+			            </div>
+					</c:forEach>
 			</c:if>
-			</c:forEach>
-		  </c:if>
-	</div>
-	</div>
+			
+        </div>
+    </div>
+    <!-- Products End -->
+
 	
-	<div class="well well-small">
-	<a class="btn btn-mini pull-right" href="#">View more <span class="icon-plus"></span></a>
-	Popular Products 
-	</div>
-	<hr>
-	<div class="well well-small">
-	<a class="btn btn-mini pull-right" href="#">View more <span class="icon-plus"></span></a>
-	Best selling Products 
-	</div>
-	</div>
-	</div>
+    <!-- Products Start -->
+    <div class="container-fluid pt-5">
+        <div class="text-center mb-4">
+            <h2 class="section-title px-5"><span class="px-2">Sản phẩm nổi bật</span></h2>
+        </div>
+        <div class="row px-xl-5 pb-3">
+        
+        	<!-- Sản nổi bật -->
+        	<c:if test="${hotProduct.size() > 0 }">
+		  
+			  	<c:forEach var="item" items="${hotProduct}" varStatus="loop">
+			  		<div class="col-lg-3 col-md-6 col-sm-12 pb-1">
+			                <div class="card product-item border-0 mb-4">
+			                    <div class="card-header product-img position-relative overflow-hidden bg-transparent border p-0">
+			                        <img class="img-fluid w-100" src="<c:url value="/assets/img/product-1.jpg" />"  alt="">
+			                    </div>
+			                    <div class="card-body border-left border-right text-center p-0 pt-4 pb-3">
+			                        <h6 class="text-truncate mb-3">${item.productName}</h6>
+			                        <div class="d-flex justify-content-center">
+			                            <h6><fmt:formatNumber type = "number" groupingUsed="true" value = "${item.price}" />₫</h6><h6 class="text-muted ml-2"><!-- <del>1,200,000đ</del> --></h6>
+			                        </div>
+			                    </div>
+			                    <div class="card-footer d-flex justify-content-between bg-light border">
+			                        <a href="" class="btn btn-sm text-dark p-0"><i class="fas fa-eye text-primary mr-1"></i>Chi tiết sản phẩm</a>
+			                        <a href="" class="btn btn-sm text-dark p-0"><i class="fas fa-shopping-cart text-primary mr-1"></i>Thêm vào giỏ hàng</a>
+			                    </div>
+			                </div>
+			            </div>
+				</c:forEach>
+		  	</c:if>
+            
+        </div>
+    </div>
+    <!-- Products End -->
+    
+    <!-- Vendor Start -->
+    <div class="container-fluid py-5">
+        <div class="row px-xl-5">
+            <div class="col">
+                <div class="owl-carousel vendor-carousel">
+                    <div class="vendor-item border p-4">
+                        <img src="<c:url value="/assets/img/vendor-1.jpg" />"  alt="">
+                    </div>
+                    <div class="vendor-item border p-4">
+                        <img src="<c:url value="/assets/img/vendor-2.jpg" />"  alt="">
+                    </div>
+                    <div class="vendor-item border p-4">
+                        <img src="<c:url value="/assets/img/vendor-3.jpg" />"  alt="">
+                    </div>
+                    <div class="vendor-item border p-4">
+                        <img src="<c:url value="/assets/img/vendor-4.jpg" />"  alt="">
+                    </div>
+                    <div class="vendor-item border p-4">
+                        <img src="<c:url value="/assets/img/vendor-5.jpg" />"  alt="">
+                    </div>
+                    <div class="vendor-item border p-4">
+                        <img src="<c:url value="/assets/img/vendor-6.jpg" />"  alt="">
+                    </div>
+                    <div class="vendor-item border p-4">
+                        <img src="<c:url value="/assets/img/vendor-7.jpg" />"  alt="">
+                    </div>
+                    <div class="vendor-item border p-4">
+                        <img src="<c:url value="/assets/img/vendor-8.jpg" />"  alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Vendor End -->
 
 </body>
 
