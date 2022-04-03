@@ -44,7 +44,6 @@
 </div>
 </div>
 <!-- Navbar End -->
-
 <!-- Products Start -->
     <div class="container-fluid pt-5">
         <div class="text-center mb-4">
@@ -68,7 +67,7 @@
 			                    </div>
 			                    <div class="card-footer d-flex justify-content-between bg-light border">
 			                        <a href="<c:url value="/chi-tiet/${item.productId}" />" class="btn btn-sm text-dark p-0"><i class="fas fa-eye text-primary mr-1"></i>Chi tiết sản phẩm</a>
-			                        <a href="" class="btn btn-sm text-dark p-0"><i class="fas fa-shopping-cart text-primary mr-1"></i>Thêm vào giỏ hàng</a>
+			                        <a href="<c:url value="/them-gio-hang/${item.productId}" />" class="btn btn-sm text-dark p-0"><i class="fas fa-shopping-cart text-primary mr-1"></i>Thêm vào giỏ hàng</a>
 			                    </div>
 			                </div>
 			            </div>
@@ -104,7 +103,7 @@
 			                    </div>
 			                    <div class="card-footer d-flex justify-content-between bg-light border">
 			                        <a href="<c:url value="/chi-tiet/${item.productId}" />" class="btn btn-sm text-dark p-0"><i class="fas fa-eye text-primary mr-1"></i>Chi tiết sản phẩm</a>
-			                        <a href="" class="btn btn-sm text-dark p-0"><i class="fas fa-shopping-cart text-primary mr-1"></i>Thêm vào giỏ hàng</a>
+			                        <a href="<c:url value="/them-gio-hang/${item.productId}" />" class="btn btn-sm text-dark p-0"><i class="fas fa-shopping-cart text-primary mr-1"></i>Thêm vào giỏ hàng</a>
 			                    </div>
 			                </div>
 			            </div>

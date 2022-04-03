@@ -9,7 +9,6 @@
 </div>
 </div>
 </div>
-	
     <!-- Page Header Start -->
     <div class="container-fluid bg-secondary mb-5">
         <div class="d-flex flex-column align-items-center justify-content-center" style="min-height: 300px">
@@ -225,7 +224,7 @@
                     <div class="card product-item border-0">
                     <!-- Sản phẩm liên quan -->
                         <div class="card-header product-img position-relative overflow-hidden bg-transparent border p-0">
-                            <img class="img-fluid w-100" src="img/product-1.jpg" alt="">
+                            <img class="img-fluid w-100" src="<c:url value="img/product-1.jpg" />" alt="">
                         </div>
                         <div class="card-body border-left border-right text-center p-0 pt-4 pb-3">
                             <h6 class="text-truncate mb-3">${item.productName}</h6>
