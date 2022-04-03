@@ -17,10 +17,4 @@ public class HomeController extends BaseController{
 		_mvShare.setViewName("user/index");
 		return _mvShare;
 	}
-	
-	@RequestMapping(value = {"/chi-tiet"})
-	public ModelAndView Product() {
-		ModelAndView mv = new ModelAndView("user/product");
-		return mv;
-	}
 }
