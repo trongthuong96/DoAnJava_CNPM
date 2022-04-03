@@ -105,4 +105,7 @@
         </div>
     </div>
     <!-- Cart End -->
+    
+    <script type="text/javascript"></script>
+    
 </body>
