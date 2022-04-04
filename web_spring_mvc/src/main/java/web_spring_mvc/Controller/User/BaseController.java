@@ -7,11 +7,15 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.servlet.ModelAndView;
 
 import web_spring_mvc.Service.User.HomeServiceImpl;
+import web_spring_mvc.Service.User.IBannerService;
 
 @Controller
 public class BaseController {
 	@Autowired
 	HomeServiceImpl _homeService;
+	
+	@Autowired
+	IBannerService _bannerService;
 	
 	public ModelAndView _mvShare = new ModelAndView();
 	

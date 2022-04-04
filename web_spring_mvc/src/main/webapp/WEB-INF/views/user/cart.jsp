@@ -40,7 +40,7 @@
                     	<c:if test="${not empty Cart}">
                     	<c:forEach var="item" items="${Cart}">
                         <tr>
-                            <td class="align-middle"><img src="img/product-1.jpg" alt="" style="width: 50px;">${item.value.product.productName}</td>
+                            <td class="align-middle"><img src="<c:url value="/assets/img/${item.value.product.image}"/>" alt="" style="width: 50px;">${item.value.product.productName}</td>
                             <td class="align-middle"><fmt:formatNumber type = "number" groupingUsed="true" value = "${item.value.product.price}" />₫</td>
                             <td class="align-middle">
                                 <div class="input-group quantity mx-auto" style="width: 100px;">
