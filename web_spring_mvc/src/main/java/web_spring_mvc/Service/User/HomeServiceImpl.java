@@ -10,9 +10,9 @@ import web_spring_mvc.Dao.MenuDao;
 import web_spring_mvc.Dao.ProductDao;
 import web_spring_mvc.Dao.TypeProductDao;
 import web_spring_mvc.Dto.ProductDto;
-import web_spring_mvc.Entity.Banner;
-import web_spring_mvc.Entity.Menu;
-import web_spring_mvc.Entity.TypeProduct;
+import web_spring_mvc.Entity.BannerEntity;
+import web_spring_mvc.Entity.MenuEntity;
+import web_spring_mvc.Entity.TypeProductEntity;
 
 @Service
 public class HomeServiceImpl implements IHomeService{
@@ -30,17 +30,17 @@ public class HomeServiceImpl implements IHomeService{
 	private ProductDao productDao;
 
 	@Override
-	public List<Banner> GetDataBanner() {
+	public List<BannerEntity> GetDataBanner() {
 		return bannerDao.GetDataBanner();
 	}
 
 	@Override
-	public List<TypeProduct> getTypeProduct() {
+	public List<TypeProductEntity> getTypeProduct() {
 		return typeProductDao.GetTypeProduct();
 	}
 
 	@Override
-	public List<Menu> GetDataMenus() {
+	public List<MenuEntity> GetDataMenus() {
 		return menuDao.GetDataMenus();
 	}
 

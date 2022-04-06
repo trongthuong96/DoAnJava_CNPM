@@ -8,13 +8,13 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 import web_spring_mvc.Entity.MapperTypeProduct;
-import web_spring_mvc.Entity.TypeProduct;
+import web_spring_mvc.Entity.TypeProductEntity;
 
 @Repository
 public class TypeProductDao extends BaseDao{
 	
-	public List<TypeProduct> GetTypeProduct() {
-		List<TypeProduct> list = new ArrayList<TypeProduct>();
+	public List<TypeProductEntity> GetTypeProduct() {
+		List<TypeProductEntity> list = new ArrayList<TypeProductEntity>();
 		String sql = "SELECT * FROM typeproduct";
 		list = _jdbcTemplate.query(sql, new MapperTypeProduct());
 		return list;

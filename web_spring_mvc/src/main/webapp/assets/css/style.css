@@ -9582,3 +9582,11 @@ a.text-dark:hover, a.text-dark:focus {
     transform: translateY(-15px);
   }
 }
+
+/* login */
+
+.container{background:#e1e7ff; border-radius: 10px; border: 2px solid; width: 40%; height: 40%; margin-top: 10px;}
+.login-sec{padding: 50px 30px; position:relative;}
+.login-sec h2{margin-bottom:30px; font-weight:800; font-size:30px; color: #c17a74;}
+.login-sec h2:after{content:" "; width:100px; height:5px; background:#6ec6ff; display:block; margin-top:20px; border-radius:3px; margin-left:auto;margin-right:auto}
+.btn-login{background: #c17a74; color:#fff; font-weight:600;}

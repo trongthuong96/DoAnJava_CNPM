@@ -5,11 +5,11 @@ import java.sql.SQLException;
 
 import org.springframework.jdbc.core.RowMapper;
 
-public class MapperMenu implements RowMapper<Menu>{
+public class MapperMenu implements RowMapper<MenuEntity>{
 
 	@Override
-	public Menu mapRow(ResultSet rs, int rowNum) throws SQLException {
-		Menu menu = new Menu();
+	public MenuEntity mapRow(ResultSet rs, int rowNum) throws SQLException {
+		MenuEntity menu = new MenuEntity();
 		menu.setId(rs.getInt("id"));
 		menu.setName(rs.getString("name"));
 		menu.setUrl(rs.getString("url"));

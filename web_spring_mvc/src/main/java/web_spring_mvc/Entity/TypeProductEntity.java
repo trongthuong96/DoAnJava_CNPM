@@ -1,11 +1,11 @@
 package web_spring_mvc.Entity;
 
-public class TypeProduct {
+public class TypeProductEntity {
 	private int id;
 	private String name;
 	
 	//constructor
-	public TypeProduct() {
+	public TypeProductEntity() {
 		super();
 		// TODO Auto-generated constructor stub
 	}

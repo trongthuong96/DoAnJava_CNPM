@@ -18,8 +18,8 @@ Navigation Bar Section
         	</c:forEach>
         </div>
         <div class="navbar-nav ml-auto py-0">
-            <a href="" class="nav-item nav-link">Đăng nhập</a>
-            <a href="" class="nav-item nav-link">Đăng ký</a>
+            <a href='<c:url value="/dang-nhap" />' class="nav-item nav-link">Đăng nhập</a>
+            <a href='<c:url value="/dang-ky" />' class="nav-item nav-link">Đăng ký</a>
         </div>
     </div>
 </nav>

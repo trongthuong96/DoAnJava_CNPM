@@ -2,8 +2,8 @@ package web_spring_mvc.Service.User;
 
 import java.util.List;
 
-import web_spring_mvc.Entity.Banner;
+import web_spring_mvc.Entity.BannerEntity;
 
 public interface IBannerService {
-	public List<Banner> GetDataBanner();
+	public List<BannerEntity> GetDataBanner();
 }

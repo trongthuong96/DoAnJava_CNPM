@@ -5,11 +5,11 @@ import java.sql.SQLException;
 
 import org.springframework.jdbc.core.RowMapper;
 
-public class MapperTypeProduct implements RowMapper<TypeProduct> {
+public class MapperTypeProduct implements RowMapper<TypeProductEntity> {
 
 	@Override
-	public TypeProduct mapRow(ResultSet rs, int rowNum) throws SQLException {
-		TypeProduct typeProduct = new TypeProduct();
+	public TypeProductEntity mapRow(ResultSet rs, int rowNum) throws SQLException {
+		TypeProductEntity typeProduct = new TypeProductEntity();
 		typeProduct.setId(rs.getInt("id"));
 		typeProduct.setName(rs.getString("name"));
 		

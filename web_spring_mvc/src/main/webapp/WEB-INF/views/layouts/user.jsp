@@ -143,6 +143,8 @@
 
     <!-- Template Javascript -->
     <script src="<c:url value="/assets/js/main.js" />" ></script>
+    
+    <decorator:getProperty property="page.script"></decorator:getProperty>
 </body>
 
 </html>

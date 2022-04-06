@@ -1,12 +1,12 @@
 package web_spring_mvc.Entity;
 
-public class Banner {
+public class BannerEntity {
 	private int id;
 	private String img;
 	private String content;
 	private String capption;
 	
-	public Banner() {
+	public BannerEntity() {
 		super();
 		// TODO Auto-generated constructor stub
 	}

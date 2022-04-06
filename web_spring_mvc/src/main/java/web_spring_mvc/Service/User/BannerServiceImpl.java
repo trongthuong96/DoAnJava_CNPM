@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import web_spring_mvc.Dao.BannerDao;
-import web_spring_mvc.Entity.Banner;
+import web_spring_mvc.Entity.BannerEntity;
 
 @Service
 public class BannerServiceImpl implements IBannerService{
@@ -15,7 +15,7 @@ public class BannerServiceImpl implements IBannerService{
 	private BannerDao bannerDao;
 	
 	@Override
-	public List<Banner> GetDataBanner() {
+	public List<BannerEntity> GetDataBanner() {
 		return bannerDao.GetDataBanner();
 	}
 

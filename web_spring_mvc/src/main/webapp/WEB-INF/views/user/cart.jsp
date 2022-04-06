@@ -44,14 +44,14 @@
                             <td class="align-middle"><fmt:formatNumber type = "number" groupingUsed="true" value = "${item.value.product.price}" />₫</td>
                             <td class="align-middle">
                                 <div class="input-group quantity mx-auto" style="width: 100px;">
-                                    <div class="input-group-btn" onclick="EditQuantity()" data-id="${item.key}">
-                                        <button class="btn btn-sm btn-primary btn-minus" >
+                                    <div class="input-group-btn">
+                                        <button class="btn btn-sm btn-primary btn-minus edit-cart" >
                                         <i class="fa fa-minus"></i>
                                         </button>
                                     </div>
-                                    <input type="text" class="form-control form-control-sm bg-secondary text-center" id="quantity-cart-${item.key}" value="${item.value.quantity}">
+                                    <input type="text" class="form-control form-control-sm bg-secondary text-center edit-cart-text" data-id="${item.key}" id="quantity-cart-${item.key}" value="${item.value.quantity}">
                                     <div class="input-group-btn">
-                                        <button class="btn btn-sm btn-primary btn-plus" onclick="EditQuantity()" data-id="${item.key}">
+                                        <button class="btn btn-sm btn-primary btn-plus edit-cart">
                                             <i class="fa fa-plus"></i>
                                         </button>
                                     </div>
@@ -106,6 +106,16 @@
     </div>
     <!-- Cart End -->
     
-    <script type="text/javascript"></script>
-    
+    <content tag="script">
+    	<script>
+    	$(document).click(function () {
+    	    if ($(event.target).hasClass('edit-cart-text')) {
+    	    	//alert($(this).data("id"));
+    	    } else {
+    	    	//alert($('.edit-cart-text').data("id"));
+    	    }
+    	}); 
+    		
+    	</script>
+    </content>
 </body>

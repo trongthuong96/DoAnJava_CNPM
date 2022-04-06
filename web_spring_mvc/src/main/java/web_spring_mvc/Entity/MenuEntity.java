@@ -1,12 +1,12 @@
 package web_spring_mvc.Entity;
 
-public class Menu {
+public class MenuEntity {
 	private int id;
 	private String name;
 	private String url;
 	
 	//constructor
-	public Menu() {
+	public MenuEntity() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
