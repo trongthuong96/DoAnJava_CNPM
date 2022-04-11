@@ -55,7 +55,7 @@ public class CartController extends BaseController{
 		session.setAttribute("TotalQuantityCart", cartService.TotalQuantity(cart));
 		session.setAttribute("TotalPriceCart", cartService.TotalPrice(cart));
 		
-		// redirect chuyá»ƒn hÆ°á»›ng vá»�
+		// redirect 
 		return "redirect:" + request.getHeader("Referer");
 	}
 	
@@ -70,7 +70,7 @@ public class CartController extends BaseController{
 		session.setAttribute("TotalQuantityCart", cartService.TotalQuantity(cart));
 		session.setAttribute("TotalPriceCart", cartService.TotalPrice(cart));
 		
-		// redirect chuyá»ƒn hÆ°á»›ng vá»�
+		// redirect 
 		return "redirect:" + request.getHeader("Referer");
 	}
 }
