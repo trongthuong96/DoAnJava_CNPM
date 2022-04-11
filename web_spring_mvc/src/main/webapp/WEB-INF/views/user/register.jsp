@@ -9,6 +9,7 @@
 </div>
 </div>
 </div>
+
 <!-- Returning Customer Start -->
  <section class="login-block">
     <div class="container">
@@ -43,6 +44,7 @@
 	      <small>Đã có tài khoản</small>
 	    </label>
 	    <button type="submit" class="btn btn-login float-right">Đăng ký</button>
+	   	<p> ${statusRegister}</p>
 	  </div>
 	  
 	</form:form>

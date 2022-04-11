@@ -13,10 +13,26 @@ public class AccountServiceImpl implements IAccountService{
 	@Autowired
 	UserDao userDao = new UserDao();
 	
+	@Override
 	public int AddAccount(UserEntity user) {
 		user.setPassword(BCrypt.hashpw(user.getPassword(), BCrypt.gensalt(12)));
 		
 		return userDao.AddAccount(user);
+	}
+
+	@Override
+	public UserEntity CheckAccount(UserEntity user) {
+		String pass = user.getPassword();
+		user = userDao.GetUserByAcc(user);
+		if (user != null) {
+			if(BCrypt.checkpw(pass, user.getPassword())) {
+				return user;
+			}
+			else {
+				return null;
+			}
+		}
+		return null;
 	}
 
 }

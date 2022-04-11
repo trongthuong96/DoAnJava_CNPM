@@ -10,7 +10,7 @@ import web_spring_mvc.Dto.ProductDtoMapper;
 @Repository
 public class ProductDao extends BaseDao {
 
-	// câu truy vấn sql
+	// sql query
 	private StringBuilder SqlString() {
 		StringBuilder sql = new StringBuilder();
 		sql.append("SELECT ");
@@ -34,7 +34,7 @@ public class ProductDao extends BaseDao {
 		return sql;
 	}
 
-	// sản phẩm mới và sản phẩm nổi bật
+	// sql query
 	private String SqlProduct(boolean newProduct, boolean hotProduct) {
 		StringBuilder sql = SqlString();
 
@@ -49,7 +49,7 @@ public class ProductDao extends BaseDao {
 		return sql.toString();
 	}
 
-	// lấy sản phẩm theo thể loại
+	// sql query
 	private StringBuilder SqlProductByTypeId(int id) {
 
 		StringBuilder sql = SqlString();
@@ -65,7 +65,7 @@ public class ProductDao extends BaseDao {
 		return sql.toString();
 	}
 
-	// list sản phẩm mới
+	// list product new
 	public List<ProductDto> GetDataNewProduct() {
 
 		String sql = SqlProduct(true, false);
@@ -73,7 +73,7 @@ public class ProductDao extends BaseDao {
 		return list;
 	}
 
-	// list sản phẩm nổi bật
+	// list product hot
 	public List<ProductDto> GetDataHotProduct() {
 
 		String sql = SqlProduct(false, true);
@@ -81,7 +81,7 @@ public class ProductDao extends BaseDao {
 		return list;
 	}
 
-	// lấy list sản phẩm theo id thể loại
+	// list product all by typeId
 	public List<ProductDto> GetDataProductByTypeId(int id) {
 
 		String sql = SqlProductByTypeId(id).toString();
@@ -89,7 +89,7 @@ public class ProductDao extends BaseDao {
 		return list;
 	}
 	
-	//lấy list sản phẩm theo id thể loại kèm phân trang
+	//find list product by typeId and paginate
 	public List<ProductDto> GetDataProductPaginates(int id, int start, int totalPage) {
 
 		String sql = SqlProductPaginates(id, start, totalPage);
@@ -97,7 +97,7 @@ public class ProductDao extends BaseDao {
 		return list;
 	}
 	
-	// lấy 1 sản phẩm theo id
+	// sql query
 	private StringBuilder SqlProductById(int id) {
 
 		StringBuilder sql = SqlString();
@@ -105,7 +105,7 @@ public class ProductDao extends BaseDao {
 		return sql;
 	}
 
-	// tìm 1 sản phẩm
+	//find 1 product by id
 	public ProductDto GetDataProductById(int id) {
 		
 		String sql = SqlProductById(id).toString();

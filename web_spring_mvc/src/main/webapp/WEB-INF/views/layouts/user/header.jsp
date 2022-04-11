@@ -18,8 +18,37 @@ Navigation Bar Section
         	</c:forEach>
         </div>
         <div class="navbar-nav ml-auto py-0">
-            <a href='<c:url value="/dang-nhap" />' class="nav-item nav-link">Đăng nhập</a>
-            <a href='<c:url value="/dang-ky" />' class="nav-item nav-link">Đăng ký</a>
+        	
+        	<!-- login register begin-->
+        	<c:if test="${empty LoginInfo}"> 
+	            <a href='<c:url value="/dang-nhap" />' class="nav-item nav-link">Đăng nhập</a>
+	            <a href='<c:url value="/dang-ky" />' class="nav-item nav-link">Đăng ký</a>
+            </c:if>
+            <c:if test="${not empty LoginInfo}"> 
+	            <%--  <div class="dropdown show">
+		            <a class="dropdown-toggle"  href='<c:url value="/dang-nhap" />' class="nav-item nav-link">${LoginInfo.fullName}</a>
+	            	<div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+				    <a class="dropdown-item" href="#">Action</a>
+				    <a class="dropdown-item" href="#">Another action</a>
+				    <a class="dropdown-item" href="#">Something else here</a>
+				  </div>
+	            </div> --%>
+	            <!-- Example single danger button -->
+				<div class="btn-group">
+				  <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+				    ${LoginInfo.fullName}
+				  </button>
+				  <div class="dropdown-menu">
+				    <a class="dropdown-item" href="#">Action</a>
+				    <a class="dropdown-item" href="#">Another</a>
+				    <a class="dropdown-item" href="#">Something</a>
+				    <div class="dropdown-divider"></div>
+				    <a class="dropdown-item" href='<c:url value="/dang-xuat"/>' >Đăng Xuất</a>
+				  </div>
+				</div>
+            </c:if>
+            <!-- login register end-->
+            
         </div>
     </div>
 </nav>
