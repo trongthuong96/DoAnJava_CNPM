@@ -15,13 +15,21 @@ public class UserDao extends BaseDao{
 		sql.append("INSERT INTO account (");
 		sql.append("email, ");
 		sql.append("password, ");
-		sql.append("fullName, ");
-		sql.append("address) ");
+		sql.append("firstName, ");
+		sql.append("lastName, ");
+		sql.append("address, ");
+		sql.append("village, ");
+		sql.append("district, ");
+		sql.append("city) ");
 		sql.append("VALUES (");
 		sql.append("'" + user.getEmail() +"', ");
 		sql.append("'" + user.getPassword() +"', ");
-		sql.append("'" + user.getFullName() +"', ");
-		sql.append("'" + user.getAddress() +"') ");
+		sql.append("'" + user.getFirstName() +"', ");
+		sql.append("'" + user.getLastName() +"', ");
+		sql.append("'" + user.getAddress() +"', ");
+		sql.append("'" + user.getVillage() +"', ");
+		sql.append("'" + user.getDistrict() +"', ");
+		sql.append("'" + user.getCity() +"')");
 
 		int insert = 0;
 		try {

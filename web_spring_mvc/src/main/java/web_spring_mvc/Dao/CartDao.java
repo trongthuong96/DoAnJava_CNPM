@@ -16,7 +16,7 @@ public class CartDao extends BaseDao{
 	@Autowired
 	ProductDao productDao = new ProductDao();
 	
-	// thêm vào giỏ hàng
+	// add product to cart
 	public HashMap<Integer, CartDto> AddCart(int id, HashMap<Integer, CartDto> cart) {
 		CartDto itemCart = new CartDto();
 		ProductDto product = productDao.GetDataProductById(id);
@@ -34,11 +34,11 @@ public class CartDao extends BaseDao{
 		return cart;
 	}
 	
-	// chỉnh sửa giỏ hàng
+	// edit product to cart
 	public HashMap<Integer, CartDto> EditCart(int id,int quantity, HashMap<Integer, CartDto> cart) {
 		
 		CartDto itemCart = new CartDto();
-		// kiểm tra xem có sản phẩm trong cart chưa
+		// kiá»ƒm tra xem cÃ³ sáº£n pháº©m trong cart chÆ°a
 		if(cart.containsKey(id)) {
 			itemCart = cart.get(id);
 			itemCart.setQuantity(quantity);
@@ -50,7 +50,7 @@ public class CartDao extends BaseDao{
 		return cart;
 	}
 	
-	// xóa gio hang
+	//delete product to cart
 	public HashMap<Integer, CartDto> DeleteCart(int id, HashMap<Integer, CartDto> cart) {
 		if (cart == null) {
 			return cart;
@@ -62,7 +62,7 @@ public class CartDao extends BaseDao{
 		return cart;
 	}
 	
-	// tổng sản phẩm trong giỏ hàng
+	// tá»•ng sáº£n pháº©m trong giá»� hÃ ng
 	public int TotalQuantity(HashMap<Integer, CartDto> cart) {
 		int totalQuantity = 0;
 		for(Map.Entry<Integer, CartDto> itemCart : cart.entrySet()) {
@@ -71,7 +71,7 @@ public class CartDao extends BaseDao{
 		return totalQuantity;
 	}
 	
-	// tổng giá trong giỏ hàng
+	// tá»•ng giÃ¡ trong giá»� hÃ ng
 		public double TotalPrice(HashMap<Integer, CartDto> cart) {
 			double totalPrice = 0;
 			for(Map.Entry<Integer, CartDto> itemCart : cart.entrySet()) {

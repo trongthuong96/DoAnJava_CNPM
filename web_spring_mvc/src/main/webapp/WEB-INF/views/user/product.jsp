@@ -2,7 +2,8 @@
     pageEncoding="UTF-8"%>   
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<c:url var="addAndEdit" value="/sua-gio-hang/" />
 <title>Chi Tiết Sản Phẩm <c:set var = "title" scope = "session" value = "${0}"/></title>
 
 <body>
@@ -54,6 +55,7 @@
             </div>
 
             <div class="col-lg-7 pb-5">
+            
                 <h3 class="font-weight-semi-bold">${product.productName}</h3>
                 <div class="d-flex mb-3">
                     <div class="text-primary mr-2">
@@ -67,23 +69,23 @@
                 <h3 class="font-weight-semi-bold mb-4"><fmt:formatNumber type = "number" groupingUsed="true" value = "${product.price}" />₫</h3>
                 <p class="mb-4">${product.decription}</p>
                 <p class="mb-4">Bảo hành: ${product.warrantyPeriod}</p>
-               
+                
+               <!--  truyen san pham -->
+              
+              	<input type="hidden" id = "productId" value="${product.productId}">
                 <div class="d-flex align-items-center mb-4 pt-2">
                     <div class="input-group quantity mr-3" style="width: 130px;">
-                        <div class="input-group-btn">
-                            <button class="btn btn-primary btn-minus" >
-                            <i class="fa fa-minus"></i>
-                            </button>
-                        </div>
-                        <input type="text" class="form-control bg-secondary text-center" value="1">
-                        <div class="input-group-btn">
-                            <button class="btn btn-primary btn-plus">
-                                <i class="fa fa-plus"></i>
-                            </button>
-                        </div>
-                    </div>
-                    <button class="btn btn-primary px-3"><i class="fa fa-shopping-cart mr-1"></i> Thêm vào giỏ hàng</button>
+					    <select class="form-control" id="selectQuantiry">
+					    
+					    	<c:forEach var="i" begin="1" end="${product.quantity}">
+					    		<option value="${i}">${i}</option >
+					      	</c:forEach>
+					    </select  >
+					  </div>
+                    <button type="submit"  onclick="AddOrEditProductCart()" class="btn btn-primary px-3"><i class="fa fa-shopping-cart mr-1"></i> Thêm vào giỏ hàng</button>
+              		
                 </div>
+              
                 <div class="d-flex pt-2">
                     <p class="text-dark font-weight-medium mb-0 mr-2">Share on:</p>
                     <div class="d-inline-flex">
@@ -101,7 +103,7 @@
                         </a>
                     </div>
                 </div>
-            </div>
+          </div>
         </div>
         <div class="row px-xl-5">
             <div class="col">
@@ -243,5 +245,17 @@
         </div>
     </div>
     <!-- Products End -->
+	
+	 <content tag="script">
+    	<script>
+    	function AddOrEditProductCart() {
+    		var quantity = document.getElementById("selectQuantiry").value;
+    		var productId = document.getElementById("productId").value;
+    		
+    		window.location.href = "${addAndEdit}"+productId+"/"+quantity;
+		}
+    		
+    	</script>
+    </content>
 	
 </body>

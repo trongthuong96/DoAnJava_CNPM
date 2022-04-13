@@ -87,7 +87,7 @@
                 </a>
                 <a href="<c:url value="/gio-hang" />" class="btn border">
                     <i class="fas fa-shopping-cart text-primary"></i>
-                    <span class="badge">${TotalQuantityCart}</span>
+                    <span class="badge">${TotalQuantity}</span>
                 </a>
             </div>
         </div>

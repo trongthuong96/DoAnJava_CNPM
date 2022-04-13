@@ -6,17 +6,23 @@ public class UserEntity {
 	private int id;
 	private String email;
 	private String password;
-	private String fullName;
+	private String firstName;
+	private String lastName;
 	private String address;
+	private String village;
+	private String district;
+	private String city;
 	private Date birthday;
 	private String phoneNumber;
 	private boolean hide;
 	
+	//constructor
 	public UserEntity() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
+	//get set
 	public int getId() {
 		return id;
 	}
@@ -40,15 +46,7 @@ public class UserEntity {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-
-	public String getFullName() {
-		return fullName;
-	}
-
-	public void setFullName(String fullName) {
-		this.fullName = fullName;
-	}
-
+	
 	public String getAddress() {
 		return address;
 	}
@@ -80,4 +78,45 @@ public class UserEntity {
 	public void setHide(boolean hide) {
 		this.hide = hide;
 	}
+
+	public String getFirstName() {
+		return firstName;
+	}
+
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+
+	public String getLastName() {
+		return lastName;
+	}
+
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
+
+	public String getVillage() {
+		return village;
+	}
+
+	public void setVillage(String village) {
+		this.village = village;
+	}
+
+	public String getDistrict() {
+		return district;
+	}
+
+	public void setDistrict(String district) {
+		this.district = district;
+	}
+
+	public String getCity() {
+		return city;
+	}
+
+	public void setCity(String city) {
+		this.city = city;
+	}
+	
 }

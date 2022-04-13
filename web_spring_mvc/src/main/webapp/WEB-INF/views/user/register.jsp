@@ -28,15 +28,14 @@
 	  </div>
 	  
 	  <div class="form-group">
-	    <label for="exampleInputFullname" class="text-uppercase">Họ và tên</label>
-	    <form:input type="text" path="fullName" class="form-control" placeholder="Nhập họ và tên" />
+	    <label for="exampleInputFullname" class="text-uppercase">Họ</label>
+	    <form:input type="text" path="firstName" class="form-control" placeholder="Nhập họ" />
 	  </div>
 	  
 	  <div class="form-group">
-	    <label for="exampleInputAddress" class="text-uppercase">Địa chỉ</label>
-	    <form:input type="text" path="address" class="form-control" placeholder="Nhập địa chỉ" />
+	    <label for="exampleInputFullname" class="text-uppercase">Tên</label>
+	    <form:input type="text" path="lastName" class="form-control" placeholder="Nhập tên" />
 	  </div>
-	  
 	  
 	    <div class="form-check">
 	     <label class="form-check-label">

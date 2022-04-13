@@ -8,6 +8,7 @@
 </div>
 </div>
 </div>
+<h1>${cart1}</h1>
  <!-- Page Header Start -->
     <div class="container-fluid bg-secondary mb-5">
         <div class="d-flex flex-column align-items-center justify-content-center" style="min-height: 300px">
@@ -37,28 +38,30 @@
                         </tr>
                     </thead>
                     <tbody class="align-middle">
-                    	<c:if test="${not empty Cart}">
-                    	<c:forEach var="item" items="${Cart}">
+                    	<c:if test="${not empty CartData}">
+                    	<c:forEach var="item" items="${CartData}">
                         <tr>
-                            <td class="align-middle"><img src="<c:url value="/assets/img/${item.value.product.image}"/>" alt="" style="width: 50px;">${item.value.product.productName}</td>
-                            <td class="align-middle"><fmt:formatNumber type = "number" groupingUsed="true" value = "${item.value.product.price}" />₫</td>
+                            <td class="align-middle"><img src="<c:url value="/assets/img/${item.product.image}"/>" alt="" style="width: 50px;">${item.product.productName}</td>
+                            <td class="align-middle"><fmt:formatNumber type = "number" groupingUsed="true" value = "${item.product.price}" />₫</td>
                             <td class="align-middle">
-                                <div class="input-group quantity mx-auto" style="width: 100px;">
-                                    <div class="input-group-btn">
-                                        <button class="btn btn-sm btn-primary btn-minus edit-cart" >
-                                        <i class="fa fa-minus"></i>
-                                        </button>
-                                    </div>
-                                    <input type="text" class="form-control form-control-sm bg-secondary text-center edit-cart-text" data-id="${item.key}" id="quantity-cart-${item.key}" value="${item.value.quantity}">
-                                    <div class="input-group-btn">
-                                        <button class="btn btn-sm btn-primary btn-plus edit-cart">
-                                            <i class="fa fa-plus"></i>
-                                        </button>
-                                    </div>
-                                </div>
+	                            <div class="form-group">
+								    <select class="form-control" id="selectQuantiry" data-id="${item.productId}" onchange="QuantityChanged(this, ${item.quantity}, ${item.productId})">
+								    
+								    	<c:forEach var="i" begin="1" end="${item.product.quantity}">
+								    		<c:if test="${i ==  item.quantity}">
+								    			<option value="starter" selected>${i}</option>
+								    		</c:if>
+								    		<c:if test="${i !=  item.quantity}">
+								    			<option>${i}</option>
+								    		</c:if>
+								      		
+								      	</c:forEach>
+								    </select>
+								  </div>
+                               
                             </td>
-                            <td class="align-middle"><fmt:formatNumber type = "number" groupingUsed="true" value = "${item.value.totalPrice}" />₫</td>
-                            <td class="align-middle"><a href='<c:url value = "/xoa-gio-hang/${item.key}"/>' class="btn btn-sm btn-primary"><i class="fa fa-times"></i></a></td>
+                            <td class="align-middle"><fmt:formatNumber type = "number" groupingUsed="true" value = "${item.totalPrice}" />₫</td>
+                            <td class="align-middle"><a href='<c:url value = "/xoa-gio-hang/${item.productId}"/>' class="btn btn-sm btn-primary"><i class="fa fa-times"></i></a></td>
                         </tr>
                         </c:forEach>
                        </c:if>
@@ -81,8 +84,8 @@
                     </div>
                     <div class="card-body">
                         <div class="d-flex justify-content-between mb-3 pt-1">
-                            <h6 class="font-weight-medium">Tổng tiền</h6>
-                            <h6 class="font-weight-medium">$150</h6>
+                            <h6 class="font-weight-medium">Tổng sản phẩm</h6>
+                            <h6 class="font-weight-medium">${TotalQuantity}</h6>
                         </div>
                         
                        <!--  từ từ làm -->
@@ -95,10 +98,10 @@
                     </div>
                     <div class="card-footer border-secondary bg-transparent">
                         <div class="d-flex justify-content-between mt-2">
-                            <h5 class="font-weight-bold">Total</h5>
-                            <h5 class="font-weight-bold">$160</h5>
+                            <h5 class="font-weight-bold">Tổng Tiền</h5>
+                            <h5 class="font-weight-bold"><fmt:formatNumber type = "number" groupingUsed="true" value = "${TotalPrice}" />₫</h5>
                         </div>
-                        <button class="btn btn-block btn-primary my-3 py-3">Proceed To Checkout</button>
+                        <button class="btn btn-block btn-primary my-3 py-3">Thanh toán</button>
                     </div>
                 </div>
             </div>
@@ -108,13 +111,12 @@
     
     <content tag="script">
     	<script>
-    	$(document).click(function () {
-    	    if ($(event.target).hasClass('edit-cart-text')) {
-    	    	//alert($(this).data("id"));
-    	    } else {
-    	    	//alert($('.edit-cart-text').data("id"));
-    	    }
-    	}); 
+    	function QuantityChanged(obj, quantity, productId) {
+			var value = obj.value;
+			if (value != quantity){
+				window.location = "sua-gio-hang/"+productId+"/" + value;
+			}
+		}
     		
     	</script>
     </content>
