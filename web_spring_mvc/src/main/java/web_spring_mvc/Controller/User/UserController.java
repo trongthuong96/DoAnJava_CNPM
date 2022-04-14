@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import web_spring_mvc.Entity.UserEntity;
@@ -30,10 +31,16 @@ public class UserController extends BaseController{
 	
 	// check login
 	@RequestMapping(value = "/dang-nhap", method = RequestMethod.POST)
-	public ModelAndView Login(HttpSession session, @ModelAttribute("user") UserEntity user) {
+	public ModelAndView Login(HttpSession session, @ModelAttribute("user") UserEntity user, @RequestParam(required=false, name = "redirect") String redirect) {
 		user = accountService.CheckAccount(user);
 		if(user != null) {
-			_mvShare.setViewName("redirect:/");
+			if(redirect != null && redirect.equals("thanh-toan"))
+			{
+				_mvShare.setViewName("redirect:/thanh-toan");
+			} else {
+				_mvShare.setViewName("redirect:/");
+			}
+			
 			session.setAttribute("LoginInfo", user);
 		} else {
 			_mvShare.addObject("statusLogin", "Đăng nhập tài khoản thất bại");

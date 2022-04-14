@@ -15,7 +15,7 @@ public class MapperUser implements RowMapper<UserEntity>{
 			user.setEmail(rs.getString("email"));
 			user.setPassword(rs.getString("password"));
 			user.setFirstName(rs.getString("firstName"));
-			user.setLastName(rs.getString("lasttName"));
+			user.setLastName(rs.getString("lastName"));
 			user.setAddress(rs.getString("address"));
 			user.setVillage(rs.getString("village"));
 			user.setDistrict(rs.getString("district"));

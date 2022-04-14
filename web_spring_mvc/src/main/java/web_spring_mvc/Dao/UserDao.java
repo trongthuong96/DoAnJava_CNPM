@@ -41,10 +41,37 @@ public class UserDao extends BaseDao{
 		return insert;
 	}
 	
+	// Edit USER info
+		public int EditAccount(UserEntity user) {
+			
+			StringBuilder sql = new StringBuilder();
+			sql.append("UPDATE account SET ");
+			sql.append("email = '" + user.getEmail());
+			sql.append("' ,password = '" + user.getPassword());
+			sql.append("' ,firstName = '" + user.getFirstName());
+			sql.append("' ,lastName = '" + user.getLastName());
+			sql.append("' ,address = '" + user.getAddress());
+			sql.append("' ,village = '" + user.getVillage());
+			sql.append("' ,district = '" + user.getDistrict());
+			sql.append("' ,phoneNumber = '" + user.getPhoneNumber());
+			sql.append("' ,city = '" + user.getCity() + "'");
+			sql.append(" WHERE ");
+			sql.append("id = " + user.getId());
+
+			int update = 0;
+			try {
+				update = _jdbcTemplate.update(sql.toString());
+				
+			}catch(Exception e) {
+				e.printStackTrace();
+			}	
+			return update;
+		}
+	
 	// RETURN USER WHEN LOGIN
 	public UserEntity GetUserByAcc(UserEntity user) {
 		
-		String sql = "SELECT * FROM account WHERE  email = '" + user.getEmail() + "'";
+		String sql = "SELECT * FROM account WHERE email = '" + user.getEmail() + "'";
 		try {
 			UserEntity result = _jdbcTemplate.queryForObject(sql, new MapperUser());
 			return result;

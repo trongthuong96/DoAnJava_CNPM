@@ -36,7 +36,7 @@ Navigation Bar Section
 	            <!-- Example single danger button -->
 				<div class="btn-group">
 				  <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-				    ${LoginInfo.fullName}
+				    ${LoginInfo.lastName}
 				  </button>
 				  <div class="dropdown-menu">
 				    <a class="dropdown-item" href="#">Action</a>

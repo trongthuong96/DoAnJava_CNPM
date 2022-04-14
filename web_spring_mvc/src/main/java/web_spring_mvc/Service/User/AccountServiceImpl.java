@@ -35,4 +35,9 @@ public class AccountServiceImpl implements IAccountService{
 		return null;
 	}
 
+	@Override
+	public int EditAccount(UserEntity user) {
+		return userDao.EditAccount(user);
+	}
+
 }

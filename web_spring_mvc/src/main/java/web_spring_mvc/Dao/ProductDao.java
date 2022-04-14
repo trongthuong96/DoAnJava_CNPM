@@ -6,10 +6,14 @@ import org.springframework.stereotype.Repository;
 
 import web_spring_mvc.Dto.ProductDto;
 import web_spring_mvc.Dto.ProductDtoMapper;
+import web_spring_mvc.Entity.ProductEntity;
+import web_spring_mvc.Entity.UserEntity;
 
 @Repository
 public class ProductDao extends BaseDao {
 
+	//USER
+	
 	// sql query
 	private StringBuilder SqlString() {
 		StringBuilder sql = new StringBuilder();
@@ -111,6 +115,56 @@ public class ProductDao extends BaseDao {
 		String sql = SqlProductById(id).toString();
 		ProductDto product = _jdbcTemplate.queryForObject(sql, new ProductDtoMapper());
 		return product;
+	}
+	
+	//ADMIN
+	// find all product
+	public List<ProductDto> GetDataAllProduct() {
+		
+		return _jdbcTemplate.query(SqlString().toString(), new ProductDtoMapper());
+	}
+	
+	//insert product
+	public int AddProduct(ProductEntity product) {
+		
+		StringBuilder sql = new StringBuilder();
+		sql.append("INSERT INTO product (");
+		sql.append("name, ");
+		sql.append("typeId, ");
+		sql.append("manufacturerId, ");
+		sql.append("priceImport, ");
+		sql.append("quantity, ");
+		sql.append("dateAdded, ");
+		sql.append("image, ");
+		sql.append("decription, ");
+		sql.append("sale, ");
+		sql.append("warrantyPeriod, ");
+		sql.append("price, ");
+		sql.append("newProduct, ");
+		sql.append("hotProduct) ");
+		sql.append("VALUES (");
+		sql.append("'" + product.getProductName() +"', ");
+		sql.append("'" + product.getTypeId() +"', ");
+		sql.append("'" + product.getManufacturerId() +"', ");
+		sql.append("'" + product.getPriceImport() +"', ");
+		sql.append("'" + product.getQuantity() +"', ");
+		sql.append("'" + product.getDateAdded() +"', ");
+		sql.append("'" + product.getImage() +"', ");
+		sql.append("'" + product.getDecription() +"', ");
+		sql.append("'" + product.getSale() +"', ");
+		sql.append("'" + product.getWarrantyPeriod() +"', ");
+		sql.append("'" + product.getPrice() +"', ");
+		sql.append("'" + product.isNewProduct() +"', ");
+		sql.append("'" + product.isHotProduct() +"')");
+
+		int insert = 0;
+		try {
+			insert = _jdbcTemplate.update(sql.toString());
+			
+		}catch(Exception e) {
+			e.printStackTrace();
+		}	
+		return insert;
 	}
 
 }

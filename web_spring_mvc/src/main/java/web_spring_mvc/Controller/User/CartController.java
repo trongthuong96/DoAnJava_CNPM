@@ -1,6 +1,5 @@
 package web_spring_mvc.Controller.User;
 
-import java.io.IOException;
 import java.util.List;
 import java.util.UUID;
 
@@ -22,15 +21,16 @@ import web_spring_mvc.Dto.Cart1Dto;
 import web_spring_mvc.Entity.UserEntity;
 import web_spring_mvc.Service.User.Cart1ServiceImpl;
 import web_spring_mvc.Service.User.CartServiceImpl;
+import web_spring_mvc.Service.User.IAccountService;
 
 @Controller
 public class CartController extends BaseController{
 	
 	@Autowired
-	private CartServiceImpl cartService = new CartServiceImpl();
+	private Cart1ServiceImpl cart1ServiceImpl;
 	
 	@Autowired
-	private Cart1ServiceImpl cart1ServiceImpl;
+	private IAccountService accountService;
 	
 	private List<Cart1Dto> list;
 	 
@@ -109,28 +109,28 @@ public class CartController extends BaseController{
 		return "redirect:" + request.getHeader("Referer");
 	}
 	
-	@RequestMapping(value = {"thanh-toan"})
-	public ModelAndView Checkout(HttpSession session, HttpServletResponse response) {
+	@RequestMapping(value = {"/thanh-toan"})
+	public ModelAndView Checkout(HttpSession session) {
 		
 		UserEntity loginInfo = (UserEntity)session.getAttribute("LoginInfo");
-		if(loginInfo == null) {
-			 try {
-				response.sendRedirect("/dang-nhap");
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		}
+		_mvShare.addObject("userUdate", loginInfo);
 		_mvShare.addObject("banners", _bannerService.GetDataBanner());
 		_mvShare.setViewName("user/checkout");
 		return _mvShare;
 	}
 	
+	
 	@RequestMapping(value = "/thanh-toan", method = RequestMethod.POST)
-	public ModelAndView Checkout(HttpSession session, @ModelAttribute("Checkout") UserEntity userInfo) {
+	public ModelAndView Checkout(@ModelAttribute("userUdate") UserEntity user, HttpSession session, @ModelAttribute("Checkout") UserEntity userInfo) {
 		
-		
+		UserEntity loginInfo = (UserEntity)session.getAttribute("LoginInfo");
+		user.setId(loginInfo.getId());
+		user.setPassword(loginInfo.getPassword());
+		if(accountService.EditAccount(user)!=0) {
+			session.setAttribute("LoginInfo", user);
+		}
 		_mvShare.addObject("banners", _bannerService.GetDataBanner());
+		_mvShare.setViewName("redirect:/thanh-toan");
 		return _mvShare;
 	}
 }
