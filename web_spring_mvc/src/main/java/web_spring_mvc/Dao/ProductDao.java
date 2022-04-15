@@ -144,18 +144,18 @@ public class ProductDao extends BaseDao {
 		sql.append("hotProduct) ");
 		sql.append("VALUES (");
 		sql.append("'" + product.getProductName() +"', ");
-		sql.append("'" + product.getTypeId() +"', ");
-		sql.append("'" + product.getManufacturerId() +"', ");
-		sql.append("'" + product.getPriceImport() +"', ");
-		sql.append("'" + product.getQuantity() +"', ");
-		sql.append("'" + product.getDateAdded() +"', ");
+		sql.append(product.getTypeId() +", ");
+		sql.append(product.getManufacturerId() +", ");
+		sql.append(product.getPriceImport() +", ");
+		sql.append(product.getQuantity() +", ");
+		sql.append("now(), ");
 		sql.append("'" + product.getImage() +"', ");
 		sql.append("'" + product.getDecription() +"', ");
-		sql.append("'" + product.getSale() +"', ");
+		sql.append(product.getSale() +", ");
 		sql.append("'" + product.getWarrantyPeriod() +"', ");
-		sql.append("'" + product.getPrice() +"', ");
-		sql.append("'" + product.isNewProduct() +"', ");
-		sql.append("'" + product.isHotProduct() +"')");
+		sql.append(product.getPrice() +", ");
+		sql.append(product.isNewProduct() +", ");
+		sql.append(product.isHotProduct() +")");
 
 		int insert = 0;
 		try {

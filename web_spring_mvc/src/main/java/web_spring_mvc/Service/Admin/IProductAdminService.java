@@ -12,4 +12,7 @@ public interface IProductAdminService {
 	
 	//insert product
 	public int AddProduct(ProductEntity product);
+	
+	// find product
+	public ProductEntity GetDataProductById(int id);
 }

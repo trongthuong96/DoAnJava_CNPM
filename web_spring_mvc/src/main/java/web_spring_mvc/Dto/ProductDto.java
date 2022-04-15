@@ -7,7 +7,7 @@ public class ProductDto {
 	private String productName;
 	private int typeId;
 	private int manufacturerId;
-	private String priceImport;
+	private int priceImport;
 	private int quantity;
 	private Date dateAdded;
 	private String image;
@@ -54,11 +54,11 @@ public class ProductDto {
 		this.manufacturerId = manufacturerId;
 	}
 
-	public String getPriceImport() {
+	public int getPriceImport() {
 		return priceImport;
 	}
 
-	public void setPriceImport(String priceImport) {
+	public void setPriceImport(int priceImport) {
 		this.priceImport = priceImport;
 	}
 

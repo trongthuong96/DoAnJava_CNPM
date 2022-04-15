@@ -5,15 +5,22 @@
 <body>
 <!-- page content -->
  <div class="right_col" role="main">
-   <h1>Thêm sản phẩm</h1>
+ 
+ <c:if test="${not empty addAndUpdateProduct}">
+ 	<h1>Sửa sản phẩm</h1>
+ </c:if>
+ <c:if test="${empty addAndUpdateProduct}">
+ 	<h1>Thêm sản phẩm</h1>
+ </c:if>
+   
    <form:form class="form-register" method="POST" modelAttribute="addAndUpdateProduct" enctype="multipart/form-data">
      <fieldset>
-         <!-- <div class="form-group d-md-flex align-items-md-center">
+         <div class="form-group d-md-flex align-items-md-center">
            <label class="control-label col-md-2" for="f-name"><span class="require">*</span>Ảnh sản phẩm</label>
            <div class="col-md-5">
-             <input name="image" type="file" id="file" />
+             <input name="imageProduct" type="file" id="file" />
          </div>
-         </div> -->
+         </div>
          <div class="form-group d-md-flex align-items-md-center">
              <label class="control-label col-md-2" for="f-name"><span class="require">*</span>Tên sản phẩm</label>
              <div class="col-md-5">
@@ -49,6 +56,13 @@
            </div>
         </div>
          <div class="form-group d-md-flex align-items-md-center">
+             <label class="control-label col-md-2" for="f-name"><span class="require">*</span>Bảo hành</label>
+             <div class="col-md-5">
+                 <form:input path="warrantyPeriod" type="text" class="form-control" id="name" placeholder="Nhập thời gian bảo hành" required="required" />
+             </div>
+         </div>
+        
+         <div class="form-group d-md-flex align-items-md-center">
            <label class="control-label col-md-2" for="kind"><span class="require">*</span>Loại sản phẩm</label>
            <div class="col-md-5">
            
@@ -68,10 +82,10 @@
            <div class="col-md-5">
             
             <!-- brand -->
-                 <form:select path="typeId" class="wide">
+                 <form:select path="manufacturerId" class="wide">
                  	<option disabled selected value="NONE"> -- Chọn nhãn hàng -- </option>
-                 	<c:forEach var="type" items="${manufacter}">
-	                     <form:option value="${type.id}">${type.name}</form:option>
+                 	<c:forEach var="manu" items="${manufacter}">
+	                     <form:option value="${manu.id}">${manu.name}</form:option>
                      </c:forEach>
                  </form:select>
             <!-- brand -->      

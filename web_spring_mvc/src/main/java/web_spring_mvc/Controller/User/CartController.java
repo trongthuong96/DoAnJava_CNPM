@@ -20,7 +20,6 @@ import org.springframework.web.servlet.ModelAndView;
 import web_spring_mvc.Dto.Cart1Dto;
 import web_spring_mvc.Entity.UserEntity;
 import web_spring_mvc.Service.User.Cart1ServiceImpl;
-import web_spring_mvc.Service.User.CartServiceImpl;
 import web_spring_mvc.Service.User.IAccountService;
 
 @Controller

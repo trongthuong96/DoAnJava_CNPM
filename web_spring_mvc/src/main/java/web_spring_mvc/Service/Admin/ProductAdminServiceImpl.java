@@ -29,4 +29,25 @@ public class ProductAdminServiceImpl implements IProductAdminService{
 		return productDao.AddProduct(product);
 	}
 
+	@Override
+	public ProductEntity GetDataProductById(int id) {
+		ProductDto product = productDao.GetDataProductById(id);
+		
+		ProductEntity productEntity = new ProductEntity();
+		productEntity.setProductId(product.getProductId());
+		productEntity.setProductName(product.getProductName());
+		productEntity.setTypeId(product.getTypeId());
+		productEntity.setManufacturerId(product.getManufacturerId());
+		productEntity.setPriceImport(product.getPriceImport());
+		productEntity.setQuantity(product.getQuantity());
+		productEntity.setDateAdded(product.getDateAdded());
+		productEntity.setImage(product.getImage());
+		productEntity.setDecription(product.getDecription());
+		productEntity.setSale(product.getSale());
+		productEntity.setWarrantyPeriod(product.getWarrantyPeriod());
+		productEntity.setPrice(product.getPrice());
+		
+		return productEntity;
+	}
+
 }

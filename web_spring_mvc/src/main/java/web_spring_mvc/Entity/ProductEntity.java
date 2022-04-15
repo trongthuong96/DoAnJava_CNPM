@@ -7,7 +7,7 @@ public class ProductEntity {
 	private String productName;
 	private int typeId;
 	private int manufacturerId;
-	private String priceImport;
+	private int priceImport;
 	private int quantity;
 	private Date dateAdded;
 	private String image;
@@ -42,11 +42,11 @@ public class ProductEntity {
 	public void setManufacturerId(int manufacturerId) {
 		this.manufacturerId = manufacturerId;
 	}
-	public String getPriceImport() {
+	public int getPriceImport() {
 		return priceImport;
 	}
-	public void setPriceImport(String priceImport) {
-		this.priceImport = priceImport;
+	public void setPriceImport(int string) {
+		this.priceImport = string;
 	}
 	public int getQuantity() {
 		return quantity;

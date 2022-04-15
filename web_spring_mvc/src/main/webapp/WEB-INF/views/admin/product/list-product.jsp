@@ -34,7 +34,7 @@
               <td>${item.productName}</td>
               <td>${item.quantity}</td>
               <td><button type="button" class="btn btn-round btn-danger"><i class="fa fa-trash-o"></i> Xóa</button></td>
-              <td><button onclick="window.location.href='editProduct.html'" class="btn btn-round btn-warning"><i class="fa fa-pencil"></i>Sửa</button></td>
+              <td><button onclick="window.location.href='<c:url value="/quan-tri/sua-san-pham/${item.productId}" />'" class="btn btn-round btn-warning"><i class="fa fa-pencil"></i>Sửa</button></td>
             </tr>
             </c:forEach>
           </tbody>
