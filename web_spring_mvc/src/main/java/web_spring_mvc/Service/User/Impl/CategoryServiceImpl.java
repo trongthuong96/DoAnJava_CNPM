@@ -1,4 +1,4 @@
-package web_spring_mvc.Service.User;
+package web_spring_mvc.Service.User.Impl;
 
 import java.util.List;
 
@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import web_spring_mvc.Dao.ProductDao;
 import web_spring_mvc.Dto.ProductDto;
+import web_spring_mvc.Service.User.ICategoryService;
 
 @Service
 public class CategoryServiceImpl implements ICategoryService{

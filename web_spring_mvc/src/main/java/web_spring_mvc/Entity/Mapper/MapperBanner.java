@@ -1,9 +1,11 @@
-package web_spring_mvc.Entity;
+package web_spring_mvc.Entity.Mapper;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import org.springframework.jdbc.core.RowMapper;
+
+import web_spring_mvc.Entity.BannerEntity;
 
 public class MapperBanner implements RowMapper<BannerEntity>{
 

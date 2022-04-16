@@ -7,8 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
-import web_spring_mvc.Entity.MapperTypeProduct;
 import web_spring_mvc.Entity.TypeProductEntity;
+import web_spring_mvc.Entity.Mapper.MapperTypeProduct;
 
 @Repository
 public class TypeProductDao extends BaseDao{

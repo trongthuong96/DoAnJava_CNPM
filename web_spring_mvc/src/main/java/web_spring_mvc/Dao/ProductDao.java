@@ -44,10 +44,10 @@ public class ProductDao extends BaseDao {
 
 		if (newProduct == true) {
 			sql.append("WHERE p.newProduct = true ");
-			sql.append("ORDER BY RAND() LIMIT 9 ");
+			sql.append("ORDER BY RAND() LIMIT 8 ");
 		} else if (hotProduct == true) {
 			sql.append("WHERE p.hotProduct = true ");
-			sql.append("ORDER BY RAND() LIMIT 12 ");
+			sql.append("ORDER BY RAND() LIMIT 8 ");
 		}
 
 		return sql.toString();
@@ -165,6 +165,55 @@ public class ProductDao extends BaseDao {
 			e.printStackTrace();
 		}	
 		return insert;
+	}
+	
+	//update product
+	public int UpdateProduct(ProductEntity product) {
+		
+		StringBuilder sql = new StringBuilder();
+		sql.append("UPDATE product SET");
+		sql.append(" name = '" + product.getProductName());
+		sql.append("', typeId = " + product.getTypeId());
+		sql.append(", manufacturerId = " + product.getManufacturerId());
+		sql.append(", priceImport = " + product.getPriceImport());
+		sql.append(", quantity = " + product.getQuantity());
+		sql.append(", image = '" + product.getImage());
+		sql.append("', decription = '" + product.getDecription());
+		sql.append("', sale = " + product.getSale());
+		sql.append(", warrantyPeriod = '" + product.getWarrantyPeriod());
+		sql.append("', price = " + product.getPrice());
+		sql.append(", newProduct = " + product.isNewProduct());
+		sql.append(", hotProduct = " + product.isHotProduct());
+		sql.append(" WHERE ");
+		sql.append(" id = " + product.getProductId());
+
+		int update = 0;
+		try {
+			update = _jdbcTemplate.update(sql.toString());
+			
+		}catch(Exception e) {
+			e.printStackTrace();
+		}	
+		return update;
+	}
+	
+	//delete product
+	//DELETE FROM product WHERE `product`.`id` = 13"
+	
+	public int DeleteProduct(int productId) {
+		
+		StringBuilder sql = new StringBuilder();
+		sql.append("DELETE FROM product WHERE ");
+		sql.append("id = " + productId);
+
+		int delete = 0;
+		try {
+			delete = _jdbcTemplate.update(sql.toString());
+			
+		}catch(Exception e) {
+			e.printStackTrace();
+		}	
+		return delete;
 	}
 
 }

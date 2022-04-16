@@ -11,7 +11,7 @@
         <div class="row px-xl-5">
             <div class="col-lg-12">
                 <div class="mb-4">
-                    <h4 class="font-weight-semi-bold mb-4">Thanh toán đơn hàng</h4>
+                    <h4 class="font-weight-semi-bold mb-4">Kiểm tra thông tin</h4>
                     <form:form class="login-form" method="POST" modelAttribute="userUdate">
                     <div class="row">
                         <div class="col-md-6 form-group">
@@ -27,7 +27,7 @@
                             <form:input path="email" class="form-control" type="text" placeholder="example@email.com" />
                         </div>
                         <div class="col-md-6 form-group">
-                            <label>Mobile No</label>
+                            <label>Số điện thoại</label>
                             <form:input path="phoneNumber" class="form-control" type="text" placeholder="0911 223 344" />
                         </div>
                         <div class="col-md-6 form-group">

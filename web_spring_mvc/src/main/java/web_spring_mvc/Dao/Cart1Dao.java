@@ -9,7 +9,7 @@ import org.springframework.stereotype.Repository;
 import web_spring_mvc.Dto.Cart1Dto;
 import web_spring_mvc.Dto.ProductDto;
 import web_spring_mvc.Entity.CartEntity;
-import web_spring_mvc.Entity.MapperCart;
+import web_spring_mvc.Entity.Mapper.MapperCart;
 
 @Repository
 public class Cart1Dao extends BaseDao{
@@ -72,13 +72,30 @@ public class Cart1Dao extends BaseDao{
 			return update;
 		}
 
-		// Delete product to cart
+		// Delete one product to cart
 		public int DeleteProductCart(String cartID, int productId) {
 			
 			StringBuilder sql = new StringBuilder();
 			sql.append("DELETE FROM cart WHERE ");
 			sql.append("cartId = '" + cartID + "' ");
 			sql.append(" AND productId = " + productId);
+
+			int delete = 0;
+			try {
+				delete = _jdbcTemplate.update(sql.toString());
+				
+			}catch(Exception e) {
+				e.printStackTrace();
+			}	
+			return delete;
+		}
+		
+		// Delete all product to cart
+		public int DeleteAllProductCart(String cartID) {
+			
+			StringBuilder sql = new StringBuilder();
+			sql.append("DELETE FROM cart WHERE ");
+			sql.append("cartId = '" + cartID + "' ");
 
 			int delete = 0;
 			try {

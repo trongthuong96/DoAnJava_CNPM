@@ -1,4 +1,4 @@
-package web_spring_mvc.Service.User;
+package web_spring_mvc.Service.User.Impl;
 
 import org.mindrot.jbcrypt.BCrypt;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 
 import web_spring_mvc.Dao.UserDao;
 import web_spring_mvc.Entity.UserEntity;
+import web_spring_mvc.Service.User.IAccountService;
 
 @Service
 public class AccountServiceImpl implements IAccountService{

@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import web_spring_mvc.Entity.UserEntity;
-import web_spring_mvc.Service.User.AccountServiceImpl;
+import web_spring_mvc.Service.User.Impl.AccountServiceImpl;
 
 @Controller
 public class UserController extends BaseController{

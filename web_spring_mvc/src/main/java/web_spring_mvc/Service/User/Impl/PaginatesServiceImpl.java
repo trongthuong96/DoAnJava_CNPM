@@ -1,8 +1,9 @@
-package web_spring_mvc.Service.User;
+package web_spring_mvc.Service.User.Impl;
 
 import org.springframework.stereotype.Service;
 
 import web_spring_mvc.Dto.PaginatesDto;
+import web_spring_mvc.Service.User.IPaginatesService;
 
 @Service
 public class PaginatesServiceImpl implements IPaginatesService{

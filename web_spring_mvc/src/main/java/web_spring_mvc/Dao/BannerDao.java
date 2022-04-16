@@ -8,7 +8,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 import web_spring_mvc.Entity.BannerEntity;
-import web_spring_mvc.Entity.MapperBanner;
+import web_spring_mvc.Entity.Mapper.MapperBanner;
 
 @Repository
 public class BannerDao extends BaseDao{

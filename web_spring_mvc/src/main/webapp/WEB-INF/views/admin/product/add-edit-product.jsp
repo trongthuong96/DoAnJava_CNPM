@@ -6,19 +6,27 @@
 <!-- page content -->
  <div class="right_col" role="main">
  
- <c:if test="${not empty addAndUpdateProduct}">
+ <c:if test="${addAndUpdateProduct.productId != null}">
  	<h1>Sửa sản phẩm</h1>
  </c:if>
- <c:if test="${empty addAndUpdateProduct}">
+ <c:if test="${addAndUpdateProduct.productId  == null}">
  	<h1>Thêm sản phẩm</h1>
  </c:if>
-   
+ 
+<!--  canh bao -->
+   <c:if test='${not empty message}'>
+	   <div class="alert alert-success text-center">
+		<strong>${message}</strong>
+		</div>
+	</c:if>
+	
    <form:form class="form-register" method="POST" modelAttribute="addAndUpdateProduct" enctype="multipart/form-data">
      <fieldset>
          <div class="form-group d-md-flex align-items-md-center">
            <label class="control-label col-md-2" for="f-name"><span class="require">*</span>Ảnh sản phẩm</label>
            <div class="col-md-5">
              <input name="imageProduct" type="file" id="file" />
+             <form:input path="image"  type="hidden"/>
          </div>
          </div>
          <div class="form-group d-md-flex align-items-md-center">

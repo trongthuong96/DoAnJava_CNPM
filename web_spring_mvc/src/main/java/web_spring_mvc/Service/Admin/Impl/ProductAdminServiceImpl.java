@@ -1,4 +1,4 @@
-package web_spring_mvc.Service.Admin;
+package web_spring_mvc.Service.Admin.Impl;
 
 import java.util.List;
 
@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import web_spring_mvc.Dao.ProductDao;
 import web_spring_mvc.Dto.ProductDto;
 import web_spring_mvc.Entity.ProductEntity;
+import web_spring_mvc.Service.Admin.IProductAdminService;
 
 @Service
 public class ProductAdminServiceImpl implements IProductAdminService{
@@ -29,6 +30,7 @@ public class ProductAdminServiceImpl implements IProductAdminService{
 		return productDao.AddProduct(product);
 	}
 
+	//find product one
 	@Override
 	public ProductEntity GetDataProductById(int id) {
 		ProductDto product = productDao.GetDataProductById(id);
@@ -48,6 +50,17 @@ public class ProductAdminServiceImpl implements IProductAdminService{
 		productEntity.setPrice(product.getPrice());
 		
 		return productEntity;
+	}
+
+	//update product
+	@Override
+	public int UpdateProduct(ProductEntity product) {
+		return productDao.UpdateProduct(product);
+	}
+
+	@Override
+	public int DeleteProduct(int productId) {
+		return productDao.DeleteProduct(productId);
 	}
 
 }

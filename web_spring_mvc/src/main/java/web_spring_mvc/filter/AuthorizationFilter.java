@@ -20,14 +20,15 @@ public class AuthorizationFilter implements Filter {
 
     @Override
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
-        HttpServletRequest request = (HttpServletRequest) servletRequest;
+        
+    	HttpServletRequest request = (HttpServletRequest) servletRequest;
         HttpServletResponse response = (HttpServletResponse) servletResponse;
+        
         String url = request.getRequestURI();
         if (url.startsWith("/web_spring_mvc/thanh-toan")) {
             UserEntity model = (UserEntity) SessionUtil.getInstance().getValue(request, "LoginInfo");
             if (model == null) {
-               
-                    response.sendRedirect(request.getContextPath()+"/dang-nhap?redirect=thanh-toan");
+                 response.sendRedirect(request.getContextPath()+"/dang-nhap?redirect=thanh-toan");
                
             } else {
             	 filterChain.doFilter(servletRequest, servletResponse);

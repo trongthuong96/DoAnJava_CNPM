@@ -2,6 +2,8 @@ package web_spring_mvc.Controller.Admin;
 
 import java.io.File;
 import java.io.IOException;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
@@ -17,12 +19,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
-import web_spring_mvc.Dto.ProductDto;
 import web_spring_mvc.Entity.ProductEntity;
 import web_spring_mvc.Service.IManuService;
 import web_spring_mvc.Service.Admin.IProductAdminService;
 import web_spring_mvc.Service.Admin.ITypeProductAdminService;
-import web_spring_mvc.Service.User.IProductService;
 
 @Controller
 public class ProductAdminController extends BaseAdminController {
@@ -35,6 +35,9 @@ public class ProductAdminController extends BaseAdminController {
 
 	@Autowired
 	private IManuService manuService;
+	
+	//time
+	DateTimeFormatter dtf = DateTimeFormatter.ofPattern("uuuuMMddHHmmss");
 
 	@RequestMapping(value = "/quan-tri/san-pham")
 	public ModelAndView ProductAdmin(HttpSession session) {
@@ -48,13 +51,14 @@ public class ProductAdminController extends BaseAdminController {
 
 	// add product
 	@RequestMapping(value = "/quan-tri/them-san-pham", method = RequestMethod.GET)
-	public ModelAndView AddProductAdmin(HttpSession session) {
+	public ModelAndView AddProductAdmin(HttpSession session, @RequestParam(required=false, name = "message") String message) {
 
 		InitAdmin(session);
 
 		_mvShareAdmin.addObject("manufacter", manuService.GetDataAllManufacturer());
 		_mvShareAdmin.addObject("typeProduct", typeProductAdminService.GetTypeProduct());
 		_mvShareAdmin.addObject("addAndUpdateProduct", new ProductEntity());
+		_mvShareAdmin.addObject("message", message);
 		_mvShareAdmin.setViewName("admin/product/add-edit-product");
 		return _mvShareAdmin;
 	}
@@ -73,34 +77,122 @@ public class ProductAdminController extends BaseAdminController {
 			return "redirect:/quan-tri/them-san-pham?message=chon-anh";
 		} else {
 			
-			product.setImage(file.getOriginalFilename());
+			//time
+			LocalDateTime now = LocalDateTime.now();
+			
+			product.setImage("product-"+dtf.format(now)+file.getOriginalFilename());
 			int check = productAdminService.AddProduct(product);
 			
 			if(check != 0) {
-				String path = context.getRealPath("/assets/img/" + file.getOriginalFilename());
+				
+				String path = context.getRealPath("/assets/img/product-" + dtf.format(now) + file.getOriginalFilename());
 				try {
 					file.transferTo(new File(path));
 				} catch (IllegalStateException | IOException e) {
 					e.printStackTrace();
 				}
 				
-				return "redirect:/quan-tri/them-san-pham?message=them-thanh-cong";
+				return "redirect:/quan-tri/them-san-pham?message=Success";
 			}else {
-				return "redirect:/quan-tri/them-san-pham?message=them-that-bai";
+				return "redirect:/quan-tri/them-san-pham?message=Error";
 			}
 		}
 	}
 	
-	// add product
-		@RequestMapping(value = "/quan-tri/sua-san-pham/{productId}", method = RequestMethod.GET)
-		public ModelAndView EditProductAdmin(HttpSession session, @PathVariable("productId") int productId) {
+	// Edit product
+	@RequestMapping(value = "/quan-tri/sua-san-pham/{productId}", method = RequestMethod.GET)
+	public ModelAndView EditProductAdmin(HttpSession session, @PathVariable("productId") int productId, @RequestParam(required=false, name = "message") String message) {
 
-			InitAdmin(session);
+		InitAdmin(session);
+		
+		_mvShareAdmin.addObject("manufacter", manuService.GetDataAllManufacturer());
+		_mvShareAdmin.addObject("typeProduct", typeProductAdminService.GetTypeProduct());
+		_mvShareAdmin.addObject("addAndUpdateProduct", productAdminService.GetDataProductById(productId));
+		_mvShareAdmin.addObject("message", message);
+		_mvShareAdmin.setViewName("admin/product/add-edit-product");
+		return _mvShareAdmin;
+	}
+	
+	// Edit product
+	@RequestMapping(value = "/quan-tri/sua-san-pham/{productId}", method = RequestMethod.POST)
+	public String EditProductAdmin(HttpSession session, HttpServletRequest request,
+			 @PathVariable("productId") int productId,
+			@RequestParam("imageProduct") MultipartFile file,
+			@ModelAttribute("addAndUpdateProduct") ProductEntity product) {
+		
+		InitAdmin(session);
+		
+		//set id
+		product.setProductId(productId);
+		
+		
+		ServletContext context = request.getServletContext();
+		int check = 0;
+		
+		//image
+		if(file.isEmpty()) {
+			check = productAdminService.UpdateProduct(product);
 			
-			_mvShareAdmin.addObject("manufacter", manuService.GetDataAllManufacturer());
-			_mvShareAdmin.addObject("typeProduct", typeProductAdminService.GetTypeProduct());
-			_mvShareAdmin.addObject("addAndUpdateProduct", productAdminService.GetDataProductById(productId));
-			_mvShareAdmin.setViewName("admin/product/add-edit-product");
-			return _mvShareAdmin;
+		} else {
+			
+			String imageDelete = product.getImage();
+			
+			//time
+			LocalDateTime now = LocalDateTime.now();
+			
+			product.setImage("product-"+dtf.format(now)+file.getOriginalFilename());
+			check = productAdminService.UpdateProduct(product);
+			
+			if(check != 0) {
+				
+				//delete image
+				String path = context.getRealPath("/assets/img/"+ imageDelete);
+				File fileToDelete = new File(path);
+				fileToDelete.delete();
+				
+				path = context.getRealPath("/assets/img/product-"+ dtf.format(now) + file.getOriginalFilename());
+				try {
+					file.transferTo(new File(path));
+				} catch (IllegalStateException | IOException e) {
+					e.printStackTrace();
+				}
+			}
 		}
+		
+		if(check != 0) {
+			return "redirect:/quan-tri/sua-san-pham/"+productId+"?message=Success";
+		} else {
+			return "redirect:/quan-tri/sua-san-pham/"+productId+"?message=Error";
+		}
+	}
+	
+	// Delete product
+	@RequestMapping(value = "/quan-tri/xoa-san-pham/{productId}")
+	public String DeleteProductAdmin(HttpServletRequest request, @PathVariable("productId") int productId) {
+		
+		ServletContext context = request.getServletContext();
+		int check = 0;
+	
+		// save image
+		String imageDelete = productAdminService.GetDataProductById(productId).getImage();
+		
+		//delete product
+		check = productAdminService.DeleteProduct(productId);
+		
+		if(check != 0) {
+			
+			//delete image
+			String path = context.getRealPath("/assets/img/"+ imageDelete);
+			File fileToDelete = new File(path);
+			fileToDelete.delete();
+		}
+		
+		
+		if(check != 0) {
+			return "redirect:/quan-tri/san-pham?message=Success";
+		} else {
+			return "redirect:/quan-tri/san-pham?message=Error";
+		}
+	}
+
 }

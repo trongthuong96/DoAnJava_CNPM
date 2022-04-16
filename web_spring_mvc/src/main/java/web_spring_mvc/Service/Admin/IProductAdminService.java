@@ -13,6 +13,12 @@ public interface IProductAdminService {
 	//insert product
 	public int AddProduct(ProductEntity product);
 	
+	//update product
+	public int UpdateProduct(ProductEntity product);
+	
 	// find product
 	public ProductEntity GetDataProductById(int id);
+	
+	//delete product
+	public int DeleteProduct(int productId);
 }

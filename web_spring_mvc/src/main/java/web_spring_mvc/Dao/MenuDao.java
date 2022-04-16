@@ -5,8 +5,8 @@ import java.util.List;
 
 import org.springframework.stereotype.Repository;
 
-import web_spring_mvc.Entity.MapperMenu;
 import web_spring_mvc.Entity.MenuEntity;
+import web_spring_mvc.Entity.Mapper.MapperMenu;
 
 @Repository
 public class MenuDao extends BaseDao{

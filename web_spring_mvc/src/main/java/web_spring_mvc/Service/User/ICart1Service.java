@@ -10,4 +10,7 @@ public interface ICart1Service {
 	public int TotalQuantity(List<Cart1Dto> list);
 	public long TotalPrice(List<Cart1Dto> list);
 	public int DeleteProductCart(String cartID, int productId);
+	
+	// delete all product in cart
+	public int DeleteAllProductCart(String cartID);
 }

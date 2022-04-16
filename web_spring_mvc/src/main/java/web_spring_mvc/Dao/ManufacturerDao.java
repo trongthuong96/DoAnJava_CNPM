@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.stereotype.Repository;
 
 import web_spring_mvc.Entity.ManufacturerEntity;
-import web_spring_mvc.Entity.MapperManufacturer;
+import web_spring_mvc.Entity.Mapper.MapperManufacturer;
 
 @Repository
 public class ManufacturerDao extends BaseDao{

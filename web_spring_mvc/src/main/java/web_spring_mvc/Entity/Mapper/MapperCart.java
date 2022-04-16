@@ -1,9 +1,11 @@
-package web_spring_mvc.Entity;
+package web_spring_mvc.Entity.Mapper;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import org.springframework.jdbc.core.RowMapper;
+
+import web_spring_mvc.Entity.CartEntity;
 
 public class MapperCart implements RowMapper<CartEntity>{
 

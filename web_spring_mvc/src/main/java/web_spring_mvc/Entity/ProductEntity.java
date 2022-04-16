@@ -3,25 +3,24 @@ package web_spring_mvc.Entity;
 import java.sql.Date;
 
 public class ProductEntity {
-	private int productId;
+	private Integer productId;
 	private String productName;
-	private int typeId;
-	private int manufacturerId;
-	private int priceImport;
-	private int quantity;
+	private Integer typeId;
+	private Integer manufacturerId;
+	private Integer priceImport;
+	private Integer quantity;
 	private Date dateAdded;
 	private String image;
 	private String decription;
-	private int sale;
+	private Integer sale;
 	private String warrantyPeriod;
-	private long price;
+	private Long price;
 	private boolean newProduct;
 	private boolean hotProduct;
-	
-	public int getProductId() {
+	public Integer getProductId() {
 		return productId;
 	}
-	public void setProductId(int productId) {
+	public void setProductId(Integer productId) {
 		this.productId = productId;
 	}
 	public String getProductName() {
@@ -30,28 +29,28 @@ public class ProductEntity {
 	public void setProductName(String productName) {
 		this.productName = productName;
 	}
-	public int getTypeId() {
+	public Integer getTypeId() {
 		return typeId;
 	}
-	public void setTypeId(int typeId) {
+	public void setTypeId(Integer typeId) {
 		this.typeId = typeId;
 	}
-	public int getManufacturerId() {
+	public Integer getManufacturerId() {
 		return manufacturerId;
 	}
-	public void setManufacturerId(int manufacturerId) {
+	public void setManufacturerId(Integer manufacturerId) {
 		this.manufacturerId = manufacturerId;
 	}
-	public int getPriceImport() {
+	public Integer getPriceImport() {
 		return priceImport;
 	}
-	public void setPriceImport(int string) {
-		this.priceImport = string;
+	public void setPriceImport(Integer priceImport) {
+		this.priceImport = priceImport;
 	}
-	public int getQuantity() {
+	public Integer getQuantity() {
 		return quantity;
 	}
-	public void setQuantity(int quantity) {
+	public void setQuantity(Integer quantity) {
 		this.quantity = quantity;
 	}
 	public Date getDateAdded() {
@@ -72,10 +71,10 @@ public class ProductEntity {
 	public void setDecription(String decription) {
 		this.decription = decription;
 	}
-	public int getSale() {
+	public Integer getSale() {
 		return sale;
 	}
-	public void setSale(int sale) {
+	public void setSale(Integer sale) {
 		this.sale = sale;
 	}
 	public String getWarrantyPeriod() {
@@ -84,10 +83,10 @@ public class ProductEntity {
 	public void setWarrantyPeriod(String warrantyPeriod) {
 		this.warrantyPeriod = warrantyPeriod;
 	}
-	public long getPrice() {
+	public Long getPrice() {
 		return price;
 	}
-	public void setPrice(long price) {
+	public void setPrice(Long price) {
 		this.price = price;
 	}
 	public boolean isNewProduct() {
@@ -102,6 +101,4 @@ public class ProductEntity {
 	public void setHotProduct(boolean hotProduct) {
 		this.hotProduct = hotProduct;
 	}
-	
-	
 }

@@ -1,9 +1,6 @@
-package web_spring_mvc.Service.User;
+package web_spring_mvc.Service.User.Impl;
 
 import java.util.List;
-
-import javax.servlet.http.Cookie;
-import javax.swing.text.html.parser.Entity;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -12,6 +9,7 @@ import web_spring_mvc.Dao.Cart1Dao;
 import web_spring_mvc.Dao.ProductDao;
 import web_spring_mvc.Dto.Cart1Dto;
 import web_spring_mvc.Entity.CartEntity;
+import web_spring_mvc.Service.User.ICart1Service;
 
 @Service
 public class Cart1ServiceImpl implements ICart1Service{
@@ -71,6 +69,12 @@ public class Cart1ServiceImpl implements ICart1Service{
 	@Override
 	public int DeleteProductCart(String cartID, int productId) {
 		return cart1Dao.DeleteProductCart(cartID, productId);
+	}
+
+	// delete all product in cart
+	@Override
+	public int DeleteAllProductCart(String cartID) {
+		return cart1Dao.DeleteAllProductCart(cartID);
 	}
 
 }

@@ -2,8 +2,8 @@ package web_spring_mvc.Dao;
 
 import org.springframework.stereotype.Repository;
 
-import web_spring_mvc.Entity.MapperUser;
 import web_spring_mvc.Entity.UserEntity;
+import web_spring_mvc.Entity.Mapper.MapperUser;
 
 @Repository
 public class UserDao extends BaseDao{
