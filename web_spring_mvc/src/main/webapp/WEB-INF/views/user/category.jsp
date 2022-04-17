@@ -124,12 +124,12 @@
 				  	</c:if>
                     
                     
-                    
+                    <!-- PAGINATE START -->
                     <div class="col-12 pb-1">
                         <nav aria-label="Page navigation">
                           <ul class="pagination justify-content-center mb-3">
-                            <li class="page-item disabled">
-                              <a class="page-link" href="#" aria-label="Previous">
+                            <li class="page-item <c:if test="${ paginatesInto.currentPage == 1}"> disabled</c:if> ">
+                              <a class="page-link" href='<c:url value="/san-pham/${categoryId}/1" />' aria-label="Previous">
                                 <span aria-hidden="true">&laquo;</span>
                                 <span class="sr-only">Previous</span>
                               </a>
@@ -142,8 +142,8 @@
                             		<li class="page-item"><a class="page-link" href="<c:url value="/san-pham/${categoryId}/${loop.index}" />">${loop.index}</a></li>
                             	</c:if>
                             </c:forEach>
-                            <li class="page-item">
-                              <a class="page-link" href="#" aria-label="Next">
+                            <li class="page-item  <c:if test="${ paginatesInto.currentPage == paginatesInto.totalPage}"> disabled</c:if>">
+                              <a class="page-link" href="<c:url value="/san-pham/${categoryId}/${paginatesInto.totalPage}" />" aria-label="Next">
                                 <span aria-hidden="true">&raquo;</span>
                                 <span class="sr-only">Next</span>
                               </a>
@@ -151,6 +151,8 @@
                           </ul>
                         </nav>
                     </div>
+                    <!-- PAGINATE END -->
+                    
                 </div>
             </div>
             <!-- Shop Product End -->

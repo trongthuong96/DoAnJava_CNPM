@@ -39,9 +39,11 @@ public class UserController extends BaseController{
 	@RequestMapping(value = "/dang-nhap", method = RequestMethod.POST)
 	public ModelAndView Login(HttpSession session, @ModelAttribute("user") UserEntity user, @RequestParam(required=false, name = "redirect") String redirect) {
 		user = accountService.CheckAccount(user);
-		RoleUserDto roleDto = roleUserCheckService.GetDataRoleUser(user.getId());
-		session.setAttribute("RoleUser", roleDto);
+		
 		if(user != null) {
+			RoleUserDto roleDto = roleUserCheckService.GetDataRoleUser(user.getId());
+			session.setAttribute("RoleUser", roleDto);
+			
 			if(redirect != null && redirect.equals("thanh-toan"))
 			{
 				_mvShare.setViewName("redirect:/thanh-toan");
@@ -55,7 +57,7 @@ public class UserController extends BaseController{
 			
 			session.setAttribute("LoginInfo", user);
 		} else {
-			_mvShare.setViewName("redirect:/dang-nhap&massage=error");
+			_mvShare.setViewName("redirect:/dang-nhap?massage=error");
 		}
 		_mvShare.addObject("banners", _bannerService.GetDataBanner());
 		return _mvShare;
@@ -77,9 +79,9 @@ public class UserController extends BaseController{
 	public ModelAndView CreateAccount(@ModelAttribute("user") UserEntity user) {
 		int count = accountService.AddAccount(user);
 		if(count > 0) {
-			_mvShare.addObject("statusRegister", "Đăng ký tài khoản thành công");
+			_mvShare.setViewName("redirect:/dang-nhap");
 		} else {
-			_mvShare.addObject("statusRegister", "Đăng ký tài khoản thất bại");
+			_mvShare.setViewName("redirect:/dang-ky?massage=error");
 		}
 		return _mvShare;
 	}

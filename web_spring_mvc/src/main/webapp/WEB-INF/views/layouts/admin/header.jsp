@@ -56,7 +56,7 @@
            </a>
            <div class="dropdown-menu dropdown-usermenu pull-right" aria-labelledby="navbarDropdown">
              <a class="dropdown-item"  href="javascript:;"> Thông tin</a>
-             <a class="dropdown-item"  href="../../User/login.html"><i class="fa fa-sign-out pull-right"></i> Đăng xuất</a>
+             <a class="dropdown-item"  href='<c:url value="/dang-xuat"/>'><i class="fa fa-sign-out pull-right"></i> Đăng xuất</a>
            </div>
          </li>
        </ul>

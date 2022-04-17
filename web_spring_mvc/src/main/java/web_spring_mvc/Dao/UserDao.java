@@ -26,10 +26,10 @@ public class UserDao extends BaseDao{
 		sql.append("'" + user.getPassword() +"', ");
 		sql.append("'" + user.getFirstName() +"', ");
 		sql.append("'" + user.getLastName() +"', ");
-		sql.append("'" + user.getAddress() +"', ");
-		sql.append("'" + user.getVillage() +"', ");
-		sql.append("'" + user.getDistrict() +"', ");
-		sql.append("'" + user.getCity() +"')");
+		sql.append("null, ");
+		sql.append("null, ");
+		sql.append("null, ");
+		sql.append("null )");
 
 		int insert = 0;
 		try {

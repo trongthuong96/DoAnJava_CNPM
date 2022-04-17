@@ -19,7 +19,7 @@ public class CategoryController extends BaseController{
 	@Autowired
 	private IPaginatesService paginatesService;
 	
-	private int totalProductPate = 2;
+	private int totalProductPate = 3;
 	
 	@RequestMapping(value = {"san-pham/{id}"})
 	public ModelAndView Product(@PathVariable String id) {
