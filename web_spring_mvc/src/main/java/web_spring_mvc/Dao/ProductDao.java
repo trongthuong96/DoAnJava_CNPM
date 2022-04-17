@@ -7,7 +7,6 @@ import org.springframework.stereotype.Repository;
 import web_spring_mvc.Dto.ProductDto;
 import web_spring_mvc.Dto.ProductDtoMapper;
 import web_spring_mvc.Entity.ProductEntity;
-import web_spring_mvc.Entity.UserEntity;
 
 @Repository
 public class ProductDao extends BaseDao {

@@ -11,7 +11,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import web_spring_mvc.Dto.RoleUserDto;
 import web_spring_mvc.Entity.UserEntity;
+import web_spring_mvc.Service.IRoleUserCheckService;
+import web_spring_mvc.Service.RoleUserCheckServiceImpl;
 import web_spring_mvc.Service.User.Impl.AccountServiceImpl;
 
 @Controller
@@ -19,6 +22,9 @@ public class UserController extends BaseController{
 	
 	@Autowired
 	AccountServiceImpl accountService = new AccountServiceImpl();
+	
+	@Autowired
+	RoleUserCheckServiceImpl roleUserCheckService = new RoleUserCheckServiceImpl();
 	
 	// LOGIN
 	@RequestMapping(value = "/dang-nhap", method = RequestMethod.GET)
@@ -33,17 +39,23 @@ public class UserController extends BaseController{
 	@RequestMapping(value = "/dang-nhap", method = RequestMethod.POST)
 	public ModelAndView Login(HttpSession session, @ModelAttribute("user") UserEntity user, @RequestParam(required=false, name = "redirect") String redirect) {
 		user = accountService.CheckAccount(user);
+		RoleUserDto roleDto = roleUserCheckService.GetDataRoleUser(user.getId());
+		session.setAttribute("RoleUser", roleDto);
 		if(user != null) {
 			if(redirect != null && redirect.equals("thanh-toan"))
 			{
 				_mvShare.setViewName("redirect:/thanh-toan");
-			} else {
+			} else if(redirect != null && redirect.equals("quan-tri")) {
+				_mvShare.setViewName("redirect:/quan-tri");
+			}
+			
+			else {
 				_mvShare.setViewName("redirect:/");
 			}
 			
 			session.setAttribute("LoginInfo", user);
 		} else {
-			_mvShare.addObject("statusLogin", "Đăng nhập tài khoản thất bại");
+			_mvShare.setViewName("redirect:/dang-nhap&massage=error");
 		}
 		_mvShare.addObject("banners", _bannerService.GetDataBanner());
 		return _mvShare;
