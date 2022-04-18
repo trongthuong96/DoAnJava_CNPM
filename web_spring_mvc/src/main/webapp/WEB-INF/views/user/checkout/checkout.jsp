@@ -16,35 +16,35 @@
                     <div class="row">
                         <div class="col-md-6 form-group">
                             <label>Họ, tên lót</label>
-                            <form:input path="firstName" class="form-control" type="text" placeholder="Đỗ Trọng" />
+                            <form:input path="firstName" class="form-control" type="text" placeholder="Đỗ Trọng" required="required"/>
                         </div>
                         <div class="col-md-6 form-group">
                             <label>Tên</label>
-                            <form:input path="lastName" class="form-control" type="text" placeholder="Thưởng" />
+                            <form:input path="lastName" class="form-control" type="text" placeholder="Thưởng" required="required"/>
                         </div>
                         <div class="col-md-6 form-group">
                             <label>E-mail</label>
-                            <form:input path="email" class="form-control" type="text" placeholder="example@email.com" />
+                            <form:input path="email" class="form-control" type="text" placeholder="example@email.com" required="required"/>
                         </div>
                         <div class="col-md-6 form-group">
                             <label>Số điện thoại</label>
-                            <form:input path="phoneNumber" class="form-control" type="text" placeholder="0911 223 344" />
+                            <form:input path="phoneNumber" class="form-control" type="text" placeholder="0911 223 344" required="required" />
                         </div>
                         <div class="col-md-6 form-group">
                             <label>Số nhà, đường</label>
-                            <form:input path="address" class="form-control" type="text" placeholder="123 Street" />
+                            <form:input path="address" class="form-control" type="text" placeholder="123 Street" required="required" />
                         </div>
                         <div class="col-md-6 form-group">
                             <label>Xã</label>
-                            <form:input path="village" class="form-control" type="text" placeholder="Tân Thông Hội" />
+                            <form:input path="village" class="form-control" type="text" placeholder="Tân Thông Hội" required="required" />
                         </div>
                        <div class="col-md-6 form-group">
                             <label>Huyện</label>
-                            <form:input path="district" class="form-control" type="text" placeholder="Củ Chi" />
+                            <form:input path="district" class="form-control" type="text" placeholder="Củ Chi" required="required" />
                         </div>
                         <div class="col-md-6 form-group">
                             <label>Thành phố</label>
-                            <form:input path="city" class="form-control" type="text" placeholder="Hồ Chí Minh" />
+                            <form:input path="city" class="form-control" type="text" placeholder="Hồ Chí Minh" required="required" />
                         </div>
                     </div>
                     <div class="card-footer border-secondary bg-transparent">

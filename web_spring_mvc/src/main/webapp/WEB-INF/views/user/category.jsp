@@ -125,6 +125,7 @@
                     
                     
                     <!-- PAGINATE START -->
+                    <c:if test="${paginatesInto.totalPage >1}">
                     <div class="col-12 pb-1">
                         <nav aria-label="Page navigation">
                           <ul class="pagination justify-content-center mb-3">
@@ -151,6 +152,7 @@
                           </ul>
                         </nav>
                     </div>
+                    </c:if>
                     <!-- PAGINATE END -->
                     
                 </div>

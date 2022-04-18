@@ -4,7 +4,7 @@
    <div class="left_col scroll-view">
      <div class="navbar nav_title" style="border: 0;">
        <a href="indexAdmin.html" class="site_title"><img src="<c:url value="/assets/admin/production/images/favicon1.ico" />" style="height: 40%; width: 11%;"> 
-         <span>Linh Kiện Laptop</span></a>
+         <span>Linh Kiện</span></a>
      </div>
 
      <div class="clearfix"></div>
